@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Loisz</title>
+  <title>Android/IOS内存泄露检测工具 | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Loisz">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="Android：Square公司的leakcanary
+IOS：微信阅读团队的MLeaksFinder">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android/IOS内存泄露检测工具">
+<meta property="og:url" content="http://yoursite.com/2017/01/03/Android-IOS内存泄露检测工具/index.html">
 <meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="Android：Square公司的leakcanary
+IOS：微信阅读团队的MLeaksFinder">
+<meta property="og:updated_time" content="2017-01-03T02:35:10.432Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Loisz">
+<meta name="twitter:title" content="Android/IOS内存泄露检测工具">
+<meta name="twitter:description" content="Android：Square公司的leakcanary
+IOS：微信阅读团队的MLeaksFinder">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
@@ -119,16 +126,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-Android-IOS内存泄露检测工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-Android-IOS内存泄露检测工具" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/03/Android-IOS内存泄露检测工具/">Android/IOS内存泄露检测工具</a>
+    <h1 class="article-title" itemprop="name">
+      Android/IOS内存泄露检测工具
     </h1>
   
 
@@ -157,10 +162,6 @@
       
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/01/03/Android-IOS内存泄露检测工具/">展开全文 >></a>
-        </p>
-      
 
       
       <div class="clearfix"></div>
@@ -168,124 +169,43 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
   
-    <article id="post-Handler-Pause-And-Resume" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/26/Handler-Pause-And-Resume/">Handler Pause And Resume</a>
-    </h1>
-  
-
-        <a href="/2016/12/26/Handler-Pause-And-Resume/" class="archive-article-date">
-  	<time datetime="2016-12-26T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-26</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><strong>在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：</strong></p>
-<p><strong>自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    Stack&lt;Message&gt; s = <span class="keyword">new</span> Stack&lt;Message&gt;();</div><div class="line">    <span class="keyword">boolean</span> is_paused = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">while</span> (!s.empty()) &#123;</div><div class="line">            sendMessageAtFrontOfQueue(s.pop());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (is_paused) &#123;</div><div class="line">            s.push(Message.obtain(msg));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">               <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">               <span class="comment">// otherwise handle message as normal</span></div><div class="line">               <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/26/Handler-Pause-And-Resume/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-开业大吉" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/12/23/开业大吉/">开业大吉</a>
-    </h1>
-  
-
-        <a href="/2016/12/23/开业大吉/" class="archive-article-date">
-  	<time datetime="2016-12-23T03:00:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-23</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="锣鼓喧天！鞭炮齐鸣！浪起来"><a href="#锣鼓喧天！鞭炮齐鸣！浪起来" class="headerlink" title="锣鼓喧天！鞭炮齐鸣！浪起来~~~~"></a>锣鼓喧天！鞭炮齐鸣！浪起来~~~~</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/扯淡/">扯淡</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/12/23/开业大吉/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
+<nav id="article-nav">
   
   
+    <a href="/2016/12/26/Handler-Pause-And-Resume/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Handler Pause And Resume</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Android-IOS内存泄露检测工具" data-title="Android/IOS内存泄露检测工具" data-url="http://yoursite.com/2017/01/03/Android-IOS内存泄露检测工具/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -307,8 +227,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
