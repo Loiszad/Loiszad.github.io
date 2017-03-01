@@ -6,24 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Handler Pause And Resume | Loisz</title>
+  <title>IO | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
+  <meta name="description" content="一、流的分类1.按流向分：输入流和输出流2.按单位分：字节流和字符流1.按功能分：节点流和处理流
+二、遍历文件并过滤12345678910File[] f1 = file.listFiles(new FileFilter() &amp;#123;			@Override			public boolean accept(File pathname) &amp;#123;				if (pathname.toStri">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Handler Pause And Resume">
-<meta property="og:url" content="http://yoursite.com/2016/12/26/Handler-Pause-And-Resume/index.html">
+<meta property="og:title" content="IO">
+<meta property="og:url" content="http://yoursite.com/2013/09/04/6-IO/index.html">
 <meta property="og:site_name" content="Loisz">
-<meta property="og:description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
-<meta property="og:updated_time" content="2016-12-26T03:49:27.447Z">
+<meta property="og:description" content="一、流的分类1.按流向分：输入流和输出流2.按单位分：字节流和字符流1.按功能分：节点流和处理流
+二、遍历文件并过滤12345678910File[] f1 = file.listFiles(new FileFilter() &amp;#123;			@Override			public boolean accept(File pathname) &amp;#123;				if (pathname.toStri">
+<meta property="og:updated_time" content="2017-03-01T09:45:23.009Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handler Pause And Resume">
-<meta name="twitter:description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
+<meta name="twitter:title" content="IO">
+<meta name="twitter:description" content="一、流的分类1.按流向分：输入流和输出流2.按单位分：字节流和字符流1.按功能分：节点流和处理流
+二、遍历文件并过滤12345678910File[] f1 = file.listFiles(new FileFilter() &amp;#123;			@Override			public boolean accept(File pathname) &amp;#123;				if (pathname.toStri">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
@@ -148,27 +145,29 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Handler-Pause-And-Resume" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-6-IO" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Handler Pause And Resume
+      IO
     </h1>
   
 
-        <a href="/2016/12/26/Handler-Pause-And-Resume/" class="archive-article-date">
-  	<time datetime="2016-12-26T03:30:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-12-26</time>
+        <a href="/2013/09/04/6-IO/" class="archive-article-date">
+  	<time datetime="2013-09-04T08:31:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-04</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：</strong></p>
-<p><strong>自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    Stack&lt;Message&gt; s = <span class="keyword">new</span> Stack&lt;Message&gt;();</div><div class="line">    <span class="keyword">boolean</span> is_paused = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">while</span> (!s.empty()) &#123;</div><div class="line">            sendMessageAtFrontOfQueue(s.pop());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (is_paused) &#123;</div><div class="line">            s.push(Message.obtain(msg));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">               <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">               <span class="comment">// otherwise handle message as normal</span></div><div class="line">               <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="一、流的分类"><a href="#一、流的分类" class="headerlink" title="一、流的分类"></a>一、流的分类</h2><p><strong>1.按流向分：输入流和输出流</strong><br><strong>2.按单位分：字节流和字符流</strong><br><strong>1.按功能分：节点流和处理流</strong></p>
+<h2 id="二、遍历文件并过滤"><a href="#二、遍历文件并过滤" class="headerlink" title="二、遍历文件并过滤"></a>二、遍历文件并过滤</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">File[] f1 = file.listFiles(<span class="keyword">new</span> FileFilter() &#123;</div><div class="line"></div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File pathname)</span> </span>&#123;</div><div class="line">				<span class="keyword">if</span> (pathname.toString().contains(<span class="string">"user"</span>)) &#123;</div><div class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div></pre></td></tr></table></figure>
+<h2 id="三、流的读写"><a href="#三、流的读写" class="headerlink" title="三、流的读写"></a>三、流的读写</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//字节</span></div><div class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line"><span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">1024</span>];</div><div class="line"><span class="keyword">while</span> ((len = is.read(b)) != -<span class="number">1</span>) &#123;</div><div class="line">	os.write(b, <span class="number">0</span>, len);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="五、内存流"><a href="#五、内存流" class="headerlink" title="五、内存流"></a>五、内存流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//ByteArrayOutputStream往内存写  ByteArrayInputStream从内存读</span></div><div class="line">String str = <span class="string">"helloworld"</span>;</div><div class="line">ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</div><div class="line">baos.write(str.getBytes());</div><div class="line">System.out.println(baos.toString());<span class="comment">// 通过toString从内存流中获取数据</span></div><div class="line">ByteArrayInputStream bais = <span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</div><div class="line"><span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> ((temp = bais.read()) != -<span class="number">1</span>) &#123;</div><div class="line">	System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="六、随机读取文件-RandomAccessFile"><a href="#六、随机读取文件-RandomAccessFile" class="headerlink" title="六、随机读取文件 RandomAccessFile"></a>六、随机读取文件 RandomAccessFile</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(<span class="string">"c:\\pro\\ee.txt"</span>);</div><div class="line">RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(file, <span class="string">"rw"</span>);</div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line"></div><div class="line"><span class="keyword">int</span> temp = raf.read();</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">raf.skipBytes(<span class="number">4</span>);<span class="comment">// 向后跳过4个字节</span></div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">temp = raf.read();</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">raf.seek(<span class="number">1</span>);<span class="comment">// 将指针设置距离开头1个字节</span></div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div></pre></td></tr></table></figure>
 
       
 
@@ -179,10 +178,15 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
 	</div>
 
       
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
 
       
 
@@ -195,18 +199,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/03/Android-IOS内存泄露检测工具/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/12/26/Handler-Pause-And-Resume/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Android/IOS内存泄露检测工具
+          Handler Pause And Resume
         
       </div>
     </a>
   
   
-    <a href="/2013/09/04/6-IO/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">IO</div>
+    <a href="/2013/08/30/5-数组排序/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">数组排序</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -219,7 +223,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Handler-Pause-And-Resume" data-title="Handler Pause And Resume" data-url="http://yoursite.com/2016/12/26/Handler-Pause-And-Resume/"></div>
+	<div class="ds-thread" data-thread-key="6-IO" data-title="IO" data-url="http://yoursite.com/2013/09/04/6-IO/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
