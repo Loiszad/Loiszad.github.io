@@ -144,67 +144,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Git的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/07/Git的使用/">Git的使用</a>
-    </h1>
-  
-
-        <a href="/2017/03/07/Git的使用/" class="archive-article-date">
-  	<time datetime="2017-03-07T02:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-07</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="各种命令"><a href="#各种命令" class="headerlink" title="各种命令"></a>各种命令</h2><p><strong>1.配置用户名</strong><br><strong>注：三个级别：system系统的、global针对当前用户全局的、local当前仓库</strong><br><strong>①增加   git config –global user.name xxxxxx</strong><br><strong>②增加用户名  git config –global –add user.name xxxx</strong><br><strong>③删除用户名  git config –global –unset user.name xxxxxx</strong><br><strong>④查询   git config –list –global</strong><br><strong>⑤修改  git config —global user.name xxxx</strong></p>
-<p><strong>2.初始化Git仓库</strong><br><strong>初始化： git init ，然后将本地项目push到远程仓库。或者  git clone url 将远程仓库代码克隆下来。</strong></p>
-<p>注：pwd 显示当前目录。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Git/">Git</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/07/Git的使用/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
     <article id="post-Android-IOS内存泄露检测工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -326,6 +265,72 @@
 
 
   
+    <article id="post-Git的使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/12/29/Git的使用/">Git的使用</a>
+    </h1>
+  
+
+        <a href="/2015/12/29/Git的使用/" class="archive-article-date">
+  	<time datetime="2015-12-29T02:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-29</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="各种命令"><a href="#各种命令" class="headerlink" title="各种命令"></a>各种命令</h1><h2 id="1-配置用户名"><a href="#1-配置用户名" class="headerlink" title="1.配置用户名"></a>1.配置用户名</h2><p><strong>注：三个级别：system系统的、global针对当前用户全局的、local当前仓库</strong><br><strong>①增加   git config –global user.name xxxxxx</strong><br><strong>②增加用户名  git config –global –add user.name xxxx</strong><br><strong>③删除用户名  git config –global –unset user.name xxxxxx</strong><br><strong>④查询   git config –list –global</strong><br><strong>⑤修改  git config —global user.name xxxx</strong></p>
+<h2 id="2-初始化Git仓库"><a href="#2-初始化Git仓库" class="headerlink" title="2.初始化Git仓库"></a>2.初始化Git仓库</h2><p><strong>初始化： git init ，然后将本地项目push到远程仓库。或者  git clone url 将远程仓库代码克隆下来。</strong></p>
+<font color="#4590a3">注：pwd 显示当前目录。</font>
+
+
+<h2 id="3-提交文件"><a href="#3-提交文件" class="headerlink" title="3.提交文件"></a>3.提交文件</h2><p><strong>①添加文件到本地暂存区 ： git add 文件名。  git add . 或者  git add -A 提交所有文件到暂存区。</strong><br><strong>②提交到本地历史记录：git commit -m ‘提示’</strong><br><strong>③推送到远程仓库：git push origin master</strong></p>
+<h2 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4.撤销修改"></a>4.撤销修改</h2><p><strong>①从暂存区撤出 ： git reset 文件名。  git reset .从暂存区恢复所有add。</strong><br><strong>②丢弃工作区的修改：git checkout –readme.txt</strong><br><strong>③回滚到某个commit：git reset –hard 版本号。 可以用git log查询版本号。</strong><br><strong>④删除某个文件：git rm xxx   (把工作区的文件和暂存区的引用同时删除掉)  git rm –cached xxx    (只删除暂存区的文件)</strong></p>
+<h2 id="5-分支"><a href="#5-分支" class="headerlink" title="5.分支"></a>5.分支</h2><p><strong>①创建分支   git branch test</strong><br><strong>②切换分支   git checkout test</strong><br><strong>③删除分支   git branch -d test</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Git/">Git</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/12/29/Git的使用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-适配不同分辨率屏幕" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -348,7 +353,8 @@
 <p>Adnroid1.6或以上SDK，在AndroidManifest.xml中提供新的一个元素<supports-screens>用于支持多屏幕机制。</supports-screens></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="tag">&lt;<span class="name">supports-screens</span></span></div><div class="line"><span class="attr">android:largeScreens</span>=<span class="string">"true"</span>   是否支持大屏</div><div class="line"><span class="attr">android:normalScreens</span>=<span class="string">"true"</span>  是否支持中屏</div><div class="line"><span class="attr">android:smallScreens</span>=<span class="string">"true"</span>   是否支持小屏</div><div class="line"><span class="attr">android:anyDensity</span>=<span class="string">"true"</span>     是否支持多种不同密度</div><div class="line">/&gt;</div></pre></td></tr></table></figure>
 <h2 id="2-单位转换"><a href="#2-单位转换" class="headerlink" title="2.单位转换"></a>2.单位转换</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line">	 * DIP转PX</div><div class="line">	 * </div><div class="line">	 * <span class="doctag">@param</span> context</div><div class="line">	 * <span class="doctag">@param</span> dipValue</div><div class="line">	 * <span class="doctag">@return</span> int</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">dip2px</span><span class="params">(Context context, <span class="keyword">float</span> dipValue)</span> </span>&#123;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</div><div class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (dipValue * scale + <span class="number">0.5f</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">/**</span></div><div class="line">	 * PX转DIP</div><div class="line">	 * </div><div class="line">	 * <span class="doctag">@param</span> context</div><div class="line">	 * <span class="doctag">@param</span> pxValue</div><div class="line">	 * <span class="doctag">@return</span> int</div><div class="line">	 */</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">px2dip</span><span class="params">(Context context, <span class="keyword">float</span> pxValue)</span> </span>&#123;</div><div class="line">		<span class="keyword">final</span> <span class="keyword">float</span> scale = context.getResources().getDisplayMetrics().density;</div><div class="line">		<span class="keyword">return</span> (<span class="keyword">int</span>) (pxValue / scale + <span class="number">0.5f</span>);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p>**文件夹对应：@？x   分辨率    dpi</p>
+<h2 id="3-解决方案"><a href="#3-解决方案" class="headerlink" title="3.解决方案"></a>3.解决方案</h2><p><img src="https://raw.githubusercontent.com/Loiszad/images/master/images/821132529041.png" alt=""></p>
+<p>**文件夹对应：@？x   分辨率    dpi</p>
 <p>对于Android适配，目前主流机型分辨率为1920x1080，1280x720，800x480等，平时开发中适配也主要适配这三个分辨率。</p>
 <p>  ● 理想情况下，就目前市面手机分布趋势，美工出800x480，1280x720，1920x1080三套图，放在HDPI，XHDPI，XXHDPI中，则图片适配问题就可以解决。<br>  ● 至于其他的适配问题，比如边缘的margin，控件的padding，则可以用values-xxdpi，values-xdpi，在对应的dimens.xml中，item名称一样，数值不一样，不同的设备将会自动在不同的dimens获取数值，得到最佳适配效果。</p>
 <h2 id="4-工具"><a href="#4-工具" class="headerlink" title="4.工具"></a>4.工具</h2><p>在项目开发中，UI给过来的设计图上的尺寸标识，一般以px（像素）为单位。Android工程师需根据设计图的尺寸将px换成dp，填到layout.xml中。<br>有了这个工具，可以很方便地实现这一点。<br>首先，确认设计图属于下列哪种规格：<br>ldpi (low) ~120dpi<br>mdpi (medium) ~160dpi<br>hdpi (high) ~240dpi<br>xhdpi (extra-high) ~320dpi<br>xxhdpi (extra-extra-high) ~480dpi<br>xxxhdpi (extra-extra-extra-high) ~640dpi</p>
