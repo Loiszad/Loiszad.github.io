@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>MySQL | Loisz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.Windows下MySQL的配置以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip ( 官方下载页:http://dev.mysql.com/downloads/mysql/5.1.html#downloads )
+配置步骤:
+
+将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL">
+<meta property="og:url" content="http://yoursite.com/2015/10/19/MySQL/index.html">
+<meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="1.Windows下MySQL的配置以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip ( 官方下载页:http://dev.mysql.com/downloads/mysql/5.1.html#downloads )
+配置步骤:
+
+将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如:">
+<meta property="og:updated_time" content="2017-03-08T03:32:58.984Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL">
+<meta name="twitter:description" content="1.Windows下MySQL的配置以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip ( 官方下载页:http://dev.mysql.com/downloads/mysql/5.1.html#downloads )
+配置步骤:
+
+将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如:">
+  
+    <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Loiszad</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Keep Moving</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/categories/C">C</a></li>
+	        
+				<li><a href="/categories/C++">C++</a></li>
+	        
+				<li><a href="/categories/Java">Java</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/IOS">IOS</a></li>
+	        
+				<li><a href="/categories/Git">Git</a></li>
+	        
+				<li><a href="/categories/SQL">SQL</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">Links</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About Me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Loiszad</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Loiszad</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Keep Moving</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/categories/C">C</a></li>
+		        
+					<li><a href="/categories/C++">C++</a></li>
+		        
+					<li><a href="/categories/Java">Java</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/IOS">IOS</a></li>
+		        
+					<li><a href="/categories/Git">Git</a></li>
+		        
+					<li><a href="/categories/SQL">SQL</a></li>
+		        
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-MySQL" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL
+    </h1>
+  
+
+        <a href="/2015/10/19/MySQL/" class="archive-article-date">
+  	<time datetime="2015-10-19T02:26:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-10-19</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-Windows下MySQL的配置"><a href="#1-Windows下MySQL的配置" class="headerlink" title="1.Windows下MySQL的配置"></a>1.Windows下MySQL的配置</h2><p>以 MySQL 5.1 免安装版为例, 下载 mysql-noinstall-5.1.69-win32.zip ( 官方下载页:<a href="http://dev.mysql.com/downloads/mysql/5.1.html#downloads" target="_blank" rel="external">http://dev.mysql.com/downloads/mysql/5.1.html#downloads</a> )</p>
+<p>配置步骤:</p>
+<ol>
+<li><p>将下载的 mysql-noinstall-5.1.69-win32.zip 解压至需要安装的位置, 如: C:\Program Files;</p>
+</li>
+<li><p>在安装文件夹下找到 my-small.ini 配置文件, 将其重命名为 my.ini , 打开进行编辑, 在 [client] 与 [mysqld] 下均添加一行: default-character-set = gbk</p>
+</li>
+<li><p>打开 Windows 环境变量设置, 新建变量名 MYSQL_HOME , 变量值为 MySQL 安装目录路径, 这里为 C:\Program Files\mysql-5.1.69-win32</p>
+</li>
+<li><p>在 环境变量 的 Path 变量中添加 ;%MYSQL_HOME%\bin;</p>
+</li>
+<li><p>安装 MySQL 服务, 打开Windows命令提示符, 执行命令: mysqld –install MySQL –defaults-file=”my.ini” 提示”Service successfully installed.”表示成功;</p>
+</li>
+</ol>
+<p>MySQL服务的启动、停止与卸载</p>
+<p>在 Windows 命令提示符下运行:</p>
+<p>启动: net start MySQL</p>
+<p>停止: net stop MySQL</p>
+<p>卸载: sc delete MySQL</p>
+<h2 id="2-SQL语句"><a href="#2-SQL语句" class="headerlink" title="2.SQL语句"></a>2.SQL语句</h2><h3 id="1-登陆：-mysql-h-主机名-u-用户名-p-密码"><a href="#1-登陆：-mysql-h-主机名-u-用户名-p-密码" class="headerlink" title="1.登陆：  mysql -h 主机名 -u 用户名 -p 密码;"></a>1.登陆：  mysql -h 主机名 -u 用户名 -p 密码;</h3><h3 id="2-创建数据库：-create-database-数据库名-其他选项"><a href="#2-创建数据库：-create-database-数据库名-其他选项" class="headerlink" title="2.创建数据库： create database 数据库名 [其他选项];"></a>2.创建数据库： create database 数据库名 [其他选项];</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例：create database db_test character set gbk;</div></pre></td></tr></table></figure>
+<h3 id="3-查看数据库：show-databases"><a href="#3-查看数据库：show-databases" class="headerlink" title="3.查看数据库：show databases;"></a>3.查看数据库：show databases;</h3><h3 id="4-使用数据库：-use-数据库名"><a href="#4-使用数据库：-use-数据库名" class="headerlink" title="4.使用数据库： use 数据库名;"></a>4.使用数据库： use 数据库名;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">例：use db_test;</div></pre></td></tr></table></figure>
+<h3 id="5-创建数据库表：create-table-表名称-列声明"><a href="#5-创建数据库表：create-table-表名称-列声明" class="headerlink" title="5.创建数据库表：create table 表名称(列声明);"></a>5.创建数据库表：create table 表名称(列声明);</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">create table students</div><div class="line">	（</div><div class="line">		id int unsigned not null auto_increment primary key,</div><div class="line">		name char(8) not null,</div><div class="line">		sex char(4) not null,</div><div class="line">		age tinyint unsigned not null,</div><div class="line">		tel char(13) null default &quot;-&quot;</div><div class="line">	);</div></pre></td></tr></table></figure>
+<h3 id="6-查看数据库有哪些表：show-tables"><a href="#6-查看数据库有哪些表：show-tables" class="headerlink" title="6.查看数据库有哪些表：show tables;"></a>6.查看数据库有哪些表：show tables;</h3><h3 id="7-插入一条数据：insert-into-表名-列名1-列名2-列名3-…-values-值1-值2-值3-…"><a href="#7-插入一条数据：insert-into-表名-列名1-列名2-列名3-…-values-值1-值2-值3-…" class="headerlink" title="7.插入一条数据：insert into 表名 [(列名1, 列名2, 列名3, …)] values (值1, 值2, 值3, …);"></a>7.插入一条数据：insert into 表名 [(列名1, 列名2, 列名3, …)] values (值1, 值2, 值3, …);</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">例： insert into students values(NULL, &quot;王刚&quot;, &quot;男&quot;, 20, &quot;13811371377&quot;);</div><div class="line">     insert into students (name, sex, age) values(&quot;孙丽华&quot;, &quot;女&quot;, 21);</div></pre></td></tr></table></figure>
+<h3 id="8-查询数据：select-列名称-from-表名称-查询条件"><a href="#8-查询数据：select-列名称-from-表名称-查询条件" class="headerlink" title="8.查询数据：select 列名称 from 表名称 [查询条件];"></a>8.查询数据：select 列名称 from 表名称 [查询条件];</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">例：select name, age from students;  </div><div class="line">    select * from students where sex=&quot;女&quot;;</div></pre></td></tr></table></figure>
+<h3 id="9-修改数据：update-表名称-set-列名称-新值-where-更新条件"><a href="#9-修改数据：update-表名称-set-列名称-新值-where-更新条件" class="headerlink" title="9.修改数据：update 表名称 set 列名称=新值 where 更新条件;"></a>9.修改数据：update 表名称 set 列名称=新值 where 更新条件;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">将id为5的手机号改为默认的&quot;-&quot;: update students set tel=default where id=5;</div><div class="line"></div><div class="line">将所有人的年龄增加1: update students set age=age+1;</div><div class="line"></div><div class="line">将手机号为 13288097888 的姓名改为 &quot;张伟鹏&quot;, 年龄改为 19: update students set name=&quot;张伟鹏&quot;, age=19 where tel=&quot;13288097888&quot;;</div></pre></td></tr></table></figure>
+<h3 id="10-删除数据：delete-from-表名称-where-删除条件"><a href="#10-删除数据：delete-from-表名称-where-删除条件" class="headerlink" title="10.删除数据：delete from 表名称 where 删除条件;"></a>10.删除数据：delete from 表名称 where 删除条件;</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">例:</div><div class="line"></div><div class="line">删除id为2的行: delete from students where id=2;</div><div class="line"></div><div class="line">删除所有年龄小于21岁的数据: delete from students where age&lt;20;</div><div class="line"></div><div class="line">删除表中的所有数据: delete from students;</div></pre></td></tr></table></figure>
+<h3 id="11-修改表"><a href="#11-修改表" class="headerlink" title="11.修改表"></a>11.修改表</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line">添加列</div><div class="line"></div><div class="line">基本形式: alter table 表名 add 列名 列数据类型 [after 插入位置];</div><div class="line"></div><div class="line">示例:</div><div class="line"></div><div class="line">在表的最后追加列 address: alter table students add address char(60);</div><div class="line"></div><div class="line">在名为 age 的列后插入列 birthday: alter table students add birthday date after age;</div><div class="line"></div><div class="line">修改列</div><div class="line"></div><div class="line">基本形式: alter table 表名 change 列名称 列新名称 新数据类型;</div><div class="line"></div><div class="line">示例:</div><div class="line"></div><div class="line">将表 tel 列改名为 telphone: alter table students change tel telphone char(13) default &quot;-&quot;;</div><div class="line"></div><div class="line">将 name 列的数据类型改为 char(16): alter table students change name name char(16) not null;</div><div class="line"></div><div class="line">删除列</div><div class="line"></div><div class="line">基本形式: alter table 表名 drop 列名称;</div><div class="line"></div><div class="line">示例:</div><div class="line"></div><div class="line">删除 birthday 列: alter table students drop birthday;</div><div class="line"></div><div class="line">重命名表</div><div class="line"></div><div class="line">基本形式: alter table 表名 rename 新表名;</div><div class="line"></div><div class="line">示例:</div><div class="line"></div><div class="line">重命名 students 表为 workmates: alter table students rename workmates;</div><div class="line"></div><div class="line">删除整张表</div><div class="line"></div><div class="line">基本形式: drop table 表名;</div><div class="line"></div><div class="line">示例: 删除 workmates 表: drop table workmates;</div><div class="line"></div><div class="line">删除整个数据库</div><div class="line"></div><div class="line">基本形式: drop database 数据库名;</div><div class="line"></div><div class="line">示例: 删除 samp_db 数据库: drop database samp_db;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/">MySQL</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/SQL/">SQL</a>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/12/29/Git的使用/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Git的使用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/05/13/适配不同分辨率屏幕/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">适配不同分辨率屏幕</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="MySQL" data-title="MySQL" data-url="http://yoursite.com/2015/10/19/MySQL/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Loiszad
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://casatwy.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Casa Taloyum</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;strong&gt;Hello! I&#39;m a coder!&lt;br/&gt;&lt;br/&gt;I&#39;m good at Android/IOS!&lt;br/&gt;&lt;br/&gt;I&#39;m poor with HTML/CSS/JS/C!&lt;strong/&gt; &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;I&#39;m coding since Autumn 2012.&lt;small/&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
