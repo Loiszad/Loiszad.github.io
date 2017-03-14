@@ -148,6 +148,54 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-curl的简单实用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/08/curl的简单实用/">curl的简单实用</a>
+    </h1>
+  
+
+        <a href="/2017/03/08/curl的简单实用/" class="archive-article-date">
+  	<time datetime="2017-03-08T09:04:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/08/curl的简单实用/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-Android-IOS内存泄露检测工具" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -295,6 +343,7 @@
 <h2 id="3-提交文件"><a href="#3-提交文件" class="headerlink" title="3.提交文件"></a>3.提交文件</h2><p><strong>①添加文件到本地暂存区 ： git add 文件名。  git add . 或者  git add -A 提交所有文件到暂存区。</strong><br><strong>②提交到本地历史记录：git commit -m ‘提示’</strong><br><strong>③推送到远程仓库：git push origin master</strong></p>
 <h2 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4.撤销修改"></a>4.撤销修改</h2><p><strong>①从暂存区撤出 ： git reset 文件名。  git reset .从暂存区恢复所有add。</strong><br><strong>②丢弃工作区的修改：git checkout –readme.txt</strong><br><strong>③回滚到某个commit：git reset –hard 版本号。 可以用git log查询版本号。</strong><br><strong>④删除某个文件：git rm xxx   (把工作区的文件和暂存区的引用同时删除掉)  git rm –cached xxx    (只删除暂存区的文件)</strong></p>
 <h2 id="5-分支"><a href="#5-分支" class="headerlink" title="5.分支"></a>5.分支</h2><p><strong>①创建分支   git branch test</strong><br><strong>②切换分支   git checkout test</strong><br><strong>③删除分支   git branch -d test</strong></p>
+<h2 id="6-更新"><a href="#6-更新" class="headerlink" title="6.更新"></a>6.更新</h2><p><strong>git fetch：相当于是从远程获取最新版本到本地，不会自动merge    例：git fetch origin master</strong><br><strong> git pull：相当于是从远程获取最新版本并merge到本地   例：git pull origin master</strong></p>
 
       
 
@@ -720,65 +769,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2013/09/04/6-IO/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-5-数组排序" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/08/30/5-数组排序/">数组排序</a>
-    </h1>
-  
-
-        <a href="/2013/08/30/5-数组排序/" class="archive-article-date">
-  	<time datetime="2013-08-30T08:18:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-08-30</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-实现Comparable接口-复写compareTo方法"><a href="#1-实现Comparable接口-复写compareTo方法" class="headerlink" title="1.实现Comparable接口 复写compareTo方法"></a>1.实现Comparable<t>接口 复写compareTo方法</t></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//实现此接口的对象列表（和数组）可以通过 Collections.sort （和 Arrays.sort ）进行自动排序,无需指定比较器。</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Book</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Book</span>&gt; </span>&#123;</div><div class="line">	<span class="keyword">private</span> String name;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">double</span> price;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getPrice</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> price;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrice</span><span class="params">(<span class="keyword">double</span> price)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.price = price;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Book</span><span class="params">(String name, <span class="keyword">double</span> price)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.name = name;</div><div class="line">		<span class="keyword">this</span>.price = price;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"Book [name="</span> + name + <span class="string">", price="</span> + price + <span class="string">"]"</span>;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Book o)</span> </span>&#123;</div><div class="line">		<span class="comment">// step1:比较价格：从低到高</span></div><div class="line">		<span class="keyword">if</span> (<span class="keyword">this</span>.price &lt; o.price) &#123;</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="keyword">this</span>.price &gt; o.price) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="keyword">return</span> <span class="keyword">this</span>.name.compareTo(o.name);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="2-实现Comparator接口-复写-compare方法"><a href="#2-实现Comparator接口-复写-compare方法" class="headerlink" title="2.实现Comparator接口  复写 compare方法"></a>2.实现Comparator<t>接口  复写 compare方法</t></h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//需要指定比较器</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StudentCompare</span> <span class="keyword">implements</span> <span class="title">Comparator</span>&lt;<span class="title">Student</span>&gt; </span>&#123;</div><div class="line"></div><div class="line">	<span class="meta">@Override</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Student o1, Student o2)</span> </span>&#123;</div><div class="line">		<span class="comment">// 练习：将学生对象存入TreeSet中，成绩：从高到低，年龄：从小到大，</span></div><div class="line">		<span class="comment">// step1:比较成绩，从高到低</span></div><div class="line">		<span class="keyword">if</span> (o1.getScore() &gt; o2.getScore()) &#123;</div><div class="line">			<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (o1.getScore() &lt; o2.getScore()) &#123;</div><div class="line">			<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">		&#125; <span class="keyword">else</span> &#123;</div><div class="line">			<span class="comment">// step2:比较年龄，从小到大</span></div><div class="line">			<span class="keyword">if</span> (o1.getAge() &lt; o2.getAge()) &#123;</div><div class="line">				<span class="keyword">return</span> -<span class="number">1</span>;</div><div class="line">			&#125; <span class="keyword">else</span> <span class="keyword">if</span> (o1.getAge() &gt; o2.getAge()) &#123;</div><div class="line">				<span class="keyword">return</span> <span class="number">1</span>;</div><div class="line">			&#125; <span class="keyword">else</span> &#123;</div><div class="line">				<span class="comment">// step3：比较姓名</span></div><div class="line">				<span class="keyword">return</span> o1.getName().compareTo(o2.getName());</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Java/">Java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/08/30/5-数组排序/">展开全文 >></a>
         </p>
       
 

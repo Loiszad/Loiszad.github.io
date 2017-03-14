@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2015/12/29/Git的使用/index.html">
 <meta property="og:site_name" content="Loisz">
 <meta property="og:description" content="各种命令1.配置用户名注：三个级别：system系统的、global针对当前用户全局的、local当前仓库①增加   git config –global user.name xxxxxx②增加用户名  git config –global –add user.name xxxx③删除用户名  git config –global –unset user.name xxxxxx④查询   git">
-<meta property="og:updated_time" content="2017-03-07T07:28:22.722Z">
+<meta property="og:updated_time" content="2017-03-14T02:59:53.168Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git的使用">
 <meta name="twitter:description" content="各种命令1.配置用户名注：三个级别：system系统的、global针对当前用户全局的、local当前仓库①增加   git config –global user.name xxxxxx②增加用户名  git config –global –add user.name xxxx③删除用户名  git config –global –unset user.name xxxxxx④查询   git">
@@ -176,6 +176,7 @@
 <h2 id="3-提交文件"><a href="#3-提交文件" class="headerlink" title="3.提交文件"></a>3.提交文件</h2><p><strong>①添加文件到本地暂存区 ： git add 文件名。  git add . 或者  git add -A 提交所有文件到暂存区。</strong><br><strong>②提交到本地历史记录：git commit -m ‘提示’</strong><br><strong>③推送到远程仓库：git push origin master</strong></p>
 <h2 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4.撤销修改"></a>4.撤销修改</h2><p><strong>①从暂存区撤出 ： git reset 文件名。  git reset .从暂存区恢复所有add。</strong><br><strong>②丢弃工作区的修改：git checkout –readme.txt</strong><br><strong>③回滚到某个commit：git reset –hard 版本号。 可以用git log查询版本号。</strong><br><strong>④删除某个文件：git rm xxx   (把工作区的文件和暂存区的引用同时删除掉)  git rm –cached xxx    (只删除暂存区的文件)</strong></p>
 <h2 id="5-分支"><a href="#5-分支" class="headerlink" title="5.分支"></a>5.分支</h2><p><strong>①创建分支   git branch test</strong><br><strong>②切换分支   git checkout test</strong><br><strong>③删除分支   git branch -d test</strong></p>
+<h2 id="6-更新"><a href="#6-更新" class="headerlink" title="6.更新"></a>6.更新</h2><p><strong>git fetch：相当于是从远程获取最新版本到本地，不会自动merge    例：git fetch origin master</strong><br><strong> git pull：相当于是从远程获取最新版本并merge到本地   例：git pull origin master</strong></p>
 
       
 
