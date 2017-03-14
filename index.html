@@ -148,6 +148,131 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-对象序列化为何要定义serialVersionUID" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/14/对象序列化为何要定义serialVersionUID/">对象序列化为何要定义serialVersionUID</a>
+    </h1>
+  
+
+        <a href="/2017/03/14/对象序列化为何要定义serialVersionUID/" class="archive-article-date">
+  	<time datetime="2017-03-14T06:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到内存，等要用了，再还原到对象中，说白了，就是能将一个2进制文件变成内存中的对象。在JAVA中，要实现这种机制，只要实现Serializable接口就可以了，先看下面这个简单例子，serialVersionUID稍后引出。我们先定义一个简单的Person类，然后创建这个对象，最后序列化它到一个文件。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.Serializable;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> String name;  </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line"><span class="keyword">import</span> java.io.FileInputStream;  </div><div class="line"><span class="keyword">import</span> java.io.FileOutputStream;  </div><div class="line"><span class="keyword">import</span> java.io.ObjectInputStream;  </div><div class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhySerialversionUID</span> </span>&#123;  </div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;  </div><div class="line">   </div><div class="line"><span class="comment">//这里是把对象序列化到文件         </span></div><div class="line">Person crab = <span class="keyword">new</span> Person();  </div><div class="line">crab.setName(<span class="string">"Mr.Crab"</span>);  </div><div class="line">   </div><div class="line">ObjectOutputStream oo = <span class="keyword">new</span> ObjectOutputStream  </div><div class="line">    (<span class="keyword">new</span> FileOutputStream(<span class="string">"crab_file"</span>));  </div><div class="line">oo.writeObject(crab);  </div><div class="line">oo.close();  </div><div class="line">   </div><div class="line"><span class="comment">//这里是把对象序列化到文件，我们先注释掉，一会儿用  </span></div><div class="line"><span class="comment">//ObjectInputStream oi = new ObjectInputStream  </span></div><div class="line"><span class="comment">//    (new FileInputStream("crab_file"));  </span></div><div class="line"><span class="comment">//Person crab_back = (Person) oi.readObject();  </span></div><div class="line"><span class="comment">//System.out.println("Hi, My name is " + crab_back.getName());  </span></div><div class="line"><span class="comment">//oi.close();  </span></div><div class="line">   </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行完后，我们发现有了一个crab_file文件，这个文件就保存这crab对象在内存中的形态。同样，我们把这部分代码注释掉，运行下面那段还原代码，发现，crab_file文件可以被转化为一个对象。 </p>
+<p>一切都那么顺利，但是如果在序列化之后，Person这个类发生了改变呢？比如，多了一个成员变量。我们做如下试验，还是先将对象序列化到一个文件中，之后在Person这个类中添加一个成员变量，如下： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.Serializable;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> String name;  </div><div class="line">    <span class="comment">//添加这么一个成员变量  </span></div><div class="line">    <span class="keyword">private</span> String address;  </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后，我们再去运行一下还原，就发现运行出错了，会报如下错误：<br>Exception in thread “main” java.io.InvalidClassException: Person; local class incompatible: stream classdesc serialVersionUID = 8383901821872620925, local class serialVersionUID = -763618247875550322<br>意思就是说，文件流中的class和classpath中的class，也就是修改过后的class，不兼容了，处于安全机制考虑，程序抛出了错误，并且拒绝载入。那么如果我们真的有需求要在序列化后添加一个字段或者方法呢？应该怎么办？那就是自己去指定serialVersionUID。<font color="#ff0000">之前，在我们的例子中，我们是没有指定serialVersionUID的，那么java编译器会自动给这个class进行一个摘要算法，类似于指纹算法，只要这个文件多一个空格，得到的UID就会截然不同的，可以保证在这么多类中，这个编号是唯一的。所以，我们添加了一个字段后，由于没有显指定serialVersionUID，编译器又为我们生成了一个UID，当然和前面保存在文件中的那个不会一样了，于是就出现了2个号码不一致的错误。<font>因此，只要我们自己指定了serialVersionUID，就可以在序列化后，去添加一个字段，或者方法，而不会影响到后期的还原，还原后的对象照样可以使用，而且还多了方法可以用，呵呵。但是serialVersionUID我们怎么去生成呢？你可以写1，也可以写2，都无所谓，但是最好还是按照摘要算法，生成一个惟一的指纹数字，eclipse可以自动生成的，jdk也自带了这个工具。一般写法类似于<br>private static final long serialVersionUID = -763618247875550322L;</font></font></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/14/对象序列化为何要定义serialVersionUID/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-理解WebView-一" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/14/理解WebView-一/">理解WebView(一)</a>
+    </h1>
+  
+
+        <a href="/2017/03/14/理解WebView-一/" class="archive-article-date">
+  	<time datetime="2017-03-14T06:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-判断webview已经滚动到底部"><a href="#1-判断webview已经滚动到底部" class="headerlink" title="1.判断webview已经滚动到底部"></a>1.判断webview已经滚动到底部</h2><p>在View中有一个getScrollY()方法，可以返回当前可见区域的顶端距整个页面顶端的距离,也就是当前内容滚动的距离。<br>还有getHeight()或者 getBottom()方法都返回当前 View 这个容器的高度<br>在ViewView中还有getContentHeight() 方法可以返回整个 html 页面的高度,但并不等同于当前整个页面的高度 ,因为 WebView 有缩放功能。你可以通过如下代码来启动或关闭webview的缩放功能。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mWebView.getSettings().setSupportZoom(<span class="keyword">true</span>);mWebView.getSettings().setBuiltInZoomControls(<span class="keyword">true</span>);</div></pre></td></tr></table></figure></p>
+<p>所以当前整个页面的高度实际上应该是原始 html 的高度再乘上缩放比例. 因此,更正后的结果 ,准确的判断方法应该是:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 如果已经处于底端</span></div><div class="line"><span class="keyword">if</span>(WebView.getContentHeight*WebView.getScale() -(webview.getHeight()+WebView.getScrollY()))&#123; </div><div class="line">  	<span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="2-WebView会话保持"><a href="#2-WebView会话保持" class="headerlink" title="2.WebView会话保持"></a>2.WebView会话保持</h2><p><strong>Webview会自动保存Cookie和Session</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Android/">Android</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/14/理解WebView-一/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-curl的简单实用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -337,7 +462,7 @@
       
         <h1 id="各种命令"><a href="#各种命令" class="headerlink" title="各种命令"></a>各种命令</h1><h2 id="1-配置用户名"><a href="#1-配置用户名" class="headerlink" title="1.配置用户名"></a>1.配置用户名</h2><p><strong>注：三个级别：system系统的、global针对当前用户全局的、local当前仓库</strong><br><strong>①增加   git config –global user.name xxxxxx</strong><br><strong>②增加用户名  git config –global –add user.name xxxx</strong><br><strong>③删除用户名  git config –global –unset user.name xxxxxx</strong><br><strong>④查询   git config –list –global</strong><br><strong>⑤修改  git config —global user.name xxxx</strong></p>
 <h2 id="2-初始化Git仓库"><a href="#2-初始化Git仓库" class="headerlink" title="2.初始化Git仓库"></a>2.初始化Git仓库</h2><p><strong>初始化： git init ，然后将本地项目push到远程仓库。或者  git clone url 将远程仓库代码克隆下来。</strong></p>
-<font color="#4590a3">注：pwd 显示当前目录。</font>
+<font color="#ff0000">注：pwd 显示当前目录。</font>
 
 
 <h2 id="3-提交文件"><a href="#3-提交文件" class="headerlink" title="3.提交文件"></a>3.提交文件</h2><p><strong>①添加文件到本地暂存区 ： git add 文件名。  git add . 或者  git add -A 提交所有文件到暂存区。</strong><br><strong>②提交到本地历史记录：git commit -m ‘提示’</strong><br><strong>③推送到远程仓库：git push origin master</strong></p>
@@ -641,134 +766,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2013/09/11/8-Socket/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-7-线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/09/09/7-线程/">线程</a>
-    </h1>
-  
-
-        <a href="/2013/09/09/7-线程/" class="archive-article-date">
-  	<time datetime="2013-09-09T01:44:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-09</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="1-线程和进程"><a href="#1-线程和进程" class="headerlink" title="1.线程和进程"></a>1.线程和进程</h2><p><strong>进程：独立运行的程序。</strong></p>
-<p><strong>线程：一个进程中的控制单元或者叫执行路径。 优先级高的线程setPriority，抢占cpu的资源会多一些，可以执行的次数相对多一些。但并不是优先级高的先执行，优先级低的后执行。</strong></p>
-<p><strong>线程的状态：新建、阻塞、运行、消亡。</strong></p>
-<h2 id="2-数据安全问题"><a href="#2-数据安全问题" class="headerlink" title="2.数据安全问题"></a>2.数据安全问题</h2><p><strong>线程安全问题：多个线程访问同一数据的时候，存在数据安全问题。有些代码应该被一个线程一次性执行完，中间不应该被其他线程打断。</strong></p>
-<p><strong>解决：线程同步，加锁或者用只有一个许可的信号量。</strong><br><strong>避免死锁：资源排序。</strong></p>
-<h3 id="①锁对象"><a href="#①锁对象" class="headerlink" title="①锁对象"></a>①锁对象</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ManTou</span> </span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="keyword">int</span> id;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">ManTou</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">		<span class="comment">// TODO Auto-generated constructor stub</span></div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"馒头"</span> + id;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Box</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line">	ManTou[] mts = <span class="keyword">new</span> ManTou[<span class="number">6</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Box box;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(Box box)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.box = box;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="comment">// box--6</span></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// for (int i = 0; i &lt; 20; i++) &#123;</span></div><div class="line">		<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">			<span class="keyword">synchronized</span> (box) &#123;<span class="comment">// t1--box-标志位false,t3</span></div><div class="line">				<span class="keyword">while</span> (box.index == box.mts.length) &#123;</div><div class="line">					<span class="keyword">try</span> &#123;</div><div class="line">						box.wait();<span class="comment">// 表示锁定对象，线程等待。也丢掉锁。</span></div><div class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">						e.printStackTrace();</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">				ManTou mt = <span class="keyword">new</span> ManTou(i);</div><div class="line">				System.out.println(Thread.currentThread().getName()</div><div class="line">						+ <span class="string">":\t生产的馒头："</span> + mt);</div><div class="line">				box.mts[box.index] = mt;</div><div class="line">				box.index++;</div><div class="line">				<span class="comment">// box.notify();// 唤醒处于box对象等待状态的线程，其实就是t2</span></div><div class="line">				box.notifyAll();</div><div class="line">				<span class="keyword">if</span> (i++ &gt; <span class="number">20</span>) &#123;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Box box;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(Box box)</span> </span>&#123;</div><div class="line">		<span class="keyword">this</span>.box = box;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="comment">// for (int i = 0; i &lt; 20; i++) &#123;</span></div><div class="line">		<span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</div><div class="line">			<span class="keyword">synchronized</span> (box) &#123;<span class="comment">// box--&gt;true,t2.等</span></div><div class="line">				<span class="comment">// i++;</span></div><div class="line">				<span class="keyword">while</span> (box.index == <span class="number">0</span>) &#123;</div><div class="line">					<span class="keyword">try</span> &#123;</div><div class="line">						box.wait();<span class="comment">//</span></div><div class="line">					&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">						<span class="comment">// TODO Auto-generated catch block</span></div><div class="line">						e.printStackTrace();</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				box.index--;</div><div class="line">				ManTou mt = box.mts[box.index];</div><div class="line">				System.out.println(<span class="string">"\t"</span> + Thread.currentThread().getName()</div><div class="line">						+ <span class="string">":\t消费的馒头："</span> + mt);</div><div class="line">				<span class="comment">// box.notify();// 唤醒处于box上等待的线程被唤醒，其实就是t1,只叫醒一个</span></div><div class="line">				box.notifyAll();<span class="comment">// 唤醒在box上等待的所有线程</span></div><div class="line">				<span class="keyword">if</span> (i++ &gt; <span class="number">20</span>) &#123;</div><div class="line">					<span class="keyword">break</span>;</div><div class="line">				&#125;</div><div class="line"></div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		<span class="comment">// 练习1：生产馒头和盒子，最多6个，数组形式</span></div><div class="line">		Box box = <span class="keyword">new</span> Box();</div><div class="line">		Producer p1 = <span class="keyword">new</span> Producer(box);</div><div class="line">		Consumer c1 = <span class="keyword">new</span> Consumer(box);</div><div class="line">		<span class="keyword">new</span> Thread(p1, <span class="string">"生产者1"</span>).start();</div><div class="line">		<span class="keyword">new</span> Thread(c1, <span class="string">"消费者1"</span>).start();</div><div class="line">		<span class="keyword">new</span> Thread(p1, <span class="string">"生产者2"</span>).start();</div><div class="line">		<span class="keyword">new</span> Thread(c1, <span class="string">"消费者2"</span>).start();</div><div class="line"></div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h3 id="②锁方法"><a href="#②锁方法" class="headerlink" title="②锁方法"></a>②锁方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bread</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> id;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Bread</span><span class="params">(<span class="keyword">int</span> id)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.id = id;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">return</span> <span class="string">"面包"</span> + <span class="keyword">this</span>.id;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Basket</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Bread[] breads = <span class="keyword">new</span> Bread[<span class="number">8</span>];<span class="comment">// 0-7</span></div><div class="line">	<span class="keyword">private</span> <span class="keyword">int</span> index = <span class="number">0</span>;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(Bread bread)</span> </span>&#123;</div><div class="line">		<span class="keyword">while</span> (index == breads.length) &#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="keyword">this</span>.wait();<span class="comment">// 锁定当前对象的线程等待，生产者等待</span></div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		System.out.println(<span class="string">"放入的面包："</span> + bread);<span class="comment">// 生产的面包：4.消费者</span></div><div class="line">		breads[index] = bread;</div><div class="line">		index++;</div><div class="line">		<span class="keyword">this</span>.notify();<span class="comment">// 唤醒当前锁上正在wait的线程，唤醒消费者</span></div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">while</span> (index == <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				<span class="keyword">this</span>.wait();<span class="comment">// 消费者等待</span></div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		index--;</div><div class="line">		Bread bread = breads[index];</div><div class="line">		System.out.println(<span class="string">"取出的面包："</span> + bread);</div><div class="line">		<span class="keyword">this</span>.notify();<span class="comment">// 唤醒生产者</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Producer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Basket basket;<span class="comment">// 1号</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Producer</span><span class="params">(Basket basket)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.basket = basket;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) &#123;</div><div class="line">			Bread bread = <span class="keyword">new</span> Bread(i);</div><div class="line">			basket.push(bread);</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				Thread.sleep((<span class="keyword">int</span>) (Math.random() * <span class="number">1000</span>));</div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consumer</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</div><div class="line">	<span class="keyword">private</span> Basket basket;<span class="comment">// 1号</span></div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="title">Consumer</span><span class="params">(Basket basket)</span> </span>&#123;</div><div class="line">		<span class="keyword">super</span>();</div><div class="line">		<span class="keyword">this</span>.basket = basket;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">30</span>; i++) &#123;</div><div class="line">			basket.pop();</div><div class="line">			<span class="keyword">try</span> &#123;</div><div class="line">				Thread.sleep((<span class="keyword">int</span>) (Math.random() * <span class="number">1000</span>));</div><div class="line">			&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</div><div class="line">				e.printStackTrace();</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestProducerConsumer</span> </span>&#123;</div><div class="line"></div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Basket basket = <span class="keyword">new</span> Basket();</div><div class="line">		Producer p1 = <span class="keyword">new</span> Producer(basket);</div><div class="line">		Consumer c1 = <span class="keyword">new</span> Consumer(basket);</div><div class="line">		Thread t1 = <span class="keyword">new</span> Thread(p1);</div><div class="line">		Thread t2 = <span class="keyword">new</span> Thread(c1);</div><div class="line">		t1.start();</div><div class="line">		t2.start();</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="3-守护线程-YDS"><a href="#3-守护线程-YDS" class="headerlink" title="3.守护线程 YDS"></a>3.守护线程 YDS</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Java/">Java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/09/09/7-线程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-6-IO" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/09/04/6-IO/">IO</a>
-    </h1>
-  
-
-        <a href="/2013/09/04/6-IO/" class="archive-article-date">
-  	<time datetime="2013-09-04T08:31:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-04</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、流的分类"><a href="#一、流的分类" class="headerlink" title="一、流的分类"></a>一、流的分类</h2><p><strong>1.按流向分：输入流和输出流</strong><br><strong>2.按单位分：字节流和字符流</strong><br><strong>1.按功能分：节点流和处理流</strong></p>
-<h2 id="二、遍历文件并过滤"><a href="#二、遍历文件并过滤" class="headerlink" title="二、遍历文件并过滤"></a>二、遍历文件并过滤</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">File[] f1 = file.listFiles(<span class="keyword">new</span> FileFilter() &#123;</div><div class="line"></div><div class="line">			<span class="meta">@Override</span></div><div class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">accept</span><span class="params">(File pathname)</span> </span>&#123;</div><div class="line">				<span class="keyword">if</span> (pathname.toString().contains(<span class="string">"user"</span>)) &#123;</div><div class="line">					<span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;);</div></pre></td></tr></table></figure>
-<h2 id="三、流的读写"><a href="#三、流的读写" class="headerlink" title="三、流的读写"></a>三、流的读写</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//字节</span></div><div class="line"><span class="keyword">int</span> len = <span class="number">0</span>;</div><div class="line"><span class="keyword">byte</span>[] b = <span class="keyword">new</span> <span class="keyword">byte</span>[<span class="number">1024</span> * <span class="number">1024</span>];</div><div class="line"><span class="keyword">while</span> ((len = is.read(b)) != -<span class="number">1</span>) &#123;</div><div class="line">	os.write(b, <span class="number">0</span>, len);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="五、内存流"><a href="#五、内存流" class="headerlink" title="五、内存流"></a>五、内存流</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//ByteArrayOutputStream往内存写  ByteArrayInputStream从内存读</span></div><div class="line">String str = <span class="string">"helloworld"</span>;</div><div class="line">ByteArrayOutputStream baos = <span class="keyword">new</span> ByteArrayOutputStream();</div><div class="line">baos.write(str.getBytes());</div><div class="line">System.out.println(baos.toString());<span class="comment">// 通过toString从内存流中获取数据</span></div><div class="line">ByteArrayInputStream bais = <span class="keyword">new</span> ByteArrayInputStream(baos.toByteArray());</div><div class="line"><span class="keyword">int</span> temp = <span class="number">0</span>;</div><div class="line"><span class="keyword">while</span> ((temp = bais.read()) != -<span class="number">1</span>) &#123;</div><div class="line">	System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h2 id="六、随机读取文件-RandomAccessFile"><a href="#六、随机读取文件-RandomAccessFile" class="headerlink" title="六、随机读取文件 RandomAccessFile"></a>六、随机读取文件 RandomAccessFile</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">File file = <span class="keyword">new</span> File(<span class="string">"c:\\pro\\ee.txt"</span>);</div><div class="line">RandomAccessFile raf = <span class="keyword">new</span> RandomAccessFile(file, <span class="string">"rw"</span>);</div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line"></div><div class="line"><span class="keyword">int</span> temp = raf.read();</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">raf.skipBytes(<span class="number">4</span>);<span class="comment">// 向后跳过4个字节</span></div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">temp = raf.read();</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div><div class="line">raf.seek(<span class="number">1</span>);<span class="comment">// 将指针设置距离开头1个字节</span></div><div class="line">System.out.println(<span class="string">"--&gt;"</span> + raf.getFilePointer());</div><div class="line">System.out.println((<span class="keyword">char</span>) temp);</div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Java/">Java</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/09/04/6-IO/">展开全文 >></a>
         </p>
       
 
