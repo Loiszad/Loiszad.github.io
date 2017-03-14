@@ -148,6 +148,65 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-8-Socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2013/09/11/8-Socket/">Socket</a>
+    </h1>
+  
+
+        <a href="/2013/09/11/8-Socket/" class="archive-article-date">
+  	<time datetime="2013-09-11T06:51:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-09-11</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1-客户端和服务端"><a href="#1-客户端和服务端" class="headerlink" title="1.客户端和服务端"></a>1.客户端和服务端</h2><p>**阻塞：从流中读数据、server.accept</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Client</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		Socket socket = <span class="keyword">null</span>;</div><div class="line">		BufferedWriter bw = <span class="keyword">null</span>;<span class="comment">// 向服务器写</span></div><div class="line">		BufferedReader br = <span class="keyword">null</span>;<span class="comment">// 表示从键盘读入</span></div><div class="line">		BufferedReader br1 = <span class="keyword">null</span>;<span class="comment">// 表示从服务器读</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			socket = <span class="keyword">new</span> Socket(<span class="string">"10.211.55.2"</span>, <span class="number">12345</span>);<span class="comment">// 在客户端建立一个socket，同时申请连接ip为localhost的主机，访问端口号为12345的应用程序</span></div><div class="line">			System.out.println(<span class="string">"申请连接服务器。。"</span>);</div><div class="line">			String str = <span class="string">"hello"</span>;</div><div class="line">			bw = <span class="keyword">new</span> BufferedWriter(<span class="keyword">new</span> OutputStreamWriter(</div><div class="line">					socket.getOutputStream()));</div><div class="line">			br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</div><div class="line">			br1 = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(</div><div class="line">					socket.getInputStream()));</div><div class="line">			str = br.readLine();<span class="comment">// 从键盘读入一句 阻塞的</span></div><div class="line">			bw.write(str);</div><div class="line">			bw.newLine();</div><div class="line">			bw.flush();</div><div class="line">			String s1 = br1.readLine();</div><div class="line">			System.out.println(<span class="string">"服务器说："</span> + s1);</div><div class="line"></div><div class="line">		&#125; <span class="keyword">catch</span> (UnknownHostException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Server</span> </span>&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</div><div class="line">		ServerSocket server = <span class="keyword">null</span>;</div><div class="line">		BufferedReader br = <span class="keyword">null</span>;<span class="comment">// 表示从输入流中读数据</span></div><div class="line">		BufferedWriter bw = <span class="keyword">null</span>;<span class="comment">// 表示向客户端说话</span></div><div class="line">		<span class="keyword">try</span> &#123;</div><div class="line">			server = <span class="keyword">new</span> ServerSocket(<span class="number">12345</span>);</div><div class="line">			System.out.println(<span class="string">"服务器已建立，等待客户端连接。。"</span>);</div><div class="line">			Socket ss = server.accept();<span class="comment">// 连接客户端，返回一个socket  阻塞的</span></div><div class="line">			System.out.println(<span class="string">"已有客户端连接。。。"</span>);</div><div class="line">			br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(ss.getInputStream()));</div><div class="line">			bw = <span class="keyword">new</span> BufferedWriter(</div><div class="line">					<span class="keyword">new</span> OutputStreamWriter(ss.getOutputStream()));</div><div class="line">			String str = br.readLine();<span class="comment">// 表示接收客户端的输入  阻塞的</span></div><div class="line">			<span class="comment">// int len = 0;</span></div><div class="line">			<span class="comment">// char[] c = new char[20];</span></div><div class="line">			<span class="comment">// len = br.read(c);</span></div><div class="line">			<span class="comment">// String str = new String(c, 0, len);</span></div><div class="line">			System.out.println(<span class="string">"from："</span> + ss.getLocalAddress());</div><div class="line">			System.out.println(<span class="string">"port："</span> + ss.getPort());</div><div class="line">			System.out.println(<span class="string">"客户端说："</span> + str);</div><div class="line">			String s1 = <span class="string">"你好，我是服务器"</span>;</div><div class="line">			bw.write(s1);</div><div class="line">			bw.newLine();</div><div class="line">			bw.flush();</div><div class="line">		&#125; <span class="keyword">catch</span> (IOException e) &#123;</div><div class="line">			e.printStackTrace();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2013/09/11/8-Socket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-7-线程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     

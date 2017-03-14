@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>对象序列化为何要定义serialVersionUID | Loisz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到内存，等要用了，再还原到对象中，说白了，就是能将一个2进制文件变成内存中的对象。在JAVA中，要实现这种机制，只要实现Serializ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象序列化为何要定义serialVersionUID">
+<meta property="og:url" content="http://yoursite.com/2015/07/24/对象序列化为何要定义serialVersionUID/index.html">
+<meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到内存，等要用了，再还原到对象中，说白了，就是能将一个2进制文件变成内存中的对象。在JAVA中，要实现这种机制，只要实现Serializ">
+<meta property="og:updated_time" content="2017-03-14T08:36:42.753Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象序列化为何要定义serialVersionUID">
+<meta name="twitter:description" content="在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到内存，等要用了，再还原到对象中，说白了，就是能将一个2进制文件变成内存中的对象。在JAVA中，要实现这种机制，只要实现Serializ">
+  
+    <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Loiszad</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Keep Moving</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/categories/C">C</a></li>
+	        
+				<li><a href="/categories/C++">C++</a></li>
+	        
+				<li><a href="/categories/Java">Java</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/IOS">IOS</a></li>
+	        
+				<li><a href="/categories/Git">Git</a></li>
+	        
+				<li><a href="/categories/SQL">SQL</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">Links</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About Me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Loiszad</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Loiszad</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Keep Moving</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/categories/C">C</a></li>
+		        
+					<li><a href="/categories/C++">C++</a></li>
+		        
+					<li><a href="/categories/Java">Java</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/IOS">IOS</a></li>
+		        
+					<li><a href="/categories/Git">Git</a></li>
+		        
+					<li><a href="/categories/SQL">SQL</a></li>
+		        
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-对象序列化为何要定义serialVersionUID" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      对象序列化为何要定义serialVersionUID
+    </h1>
+  
+
+        <a href="/2015/07/24/对象序列化为何要定义serialVersionUID/" class="archive-article-date">
+  	<time datetime="2015-07-24T06:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-24</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在很多应用中，需要对某些对象进行序列化，让它们离开内存空间，入住物理硬盘，以便长期保存。比如最常见的是Web服务器中的Session对象，当有10万用户并发访问，就有可能出现10万个Session对象，内存可能吃不消，于是Web容器就会把一些seesion先序列化到内存，等要用了，再还原到对象中，说白了，就是能将一个2进制文件变成内存中的对象。在JAVA中，要实现这种机制，只要实现Serializable接口就可以了，先看下面这个简单例子，serialVersionUID稍后引出。我们先定义一个简单的Person类，然后创建这个对象，最后序列化它到一个文件。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.Serializable;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> String name;  </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">&#125;  </div><div class="line"><span class="keyword">import</span> java.io.FileInputStream;  </div><div class="line"><span class="keyword">import</span> java.io.FileOutputStream;  </div><div class="line"><span class="keyword">import</span> java.io.ObjectInputStream;  </div><div class="line"><span class="keyword">import</span> java.io.ObjectOutputStream;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhySerialversionUID</span> </span>&#123;  </div><div class="line">   </div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;  </div><div class="line">   </div><div class="line"><span class="comment">//这里是把对象序列化到文件         </span></div><div class="line">Person crab = <span class="keyword">new</span> Person();  </div><div class="line">crab.setName(<span class="string">"Mr.Crab"</span>);  </div><div class="line">   </div><div class="line">ObjectOutputStream oo = <span class="keyword">new</span> ObjectOutputStream  </div><div class="line">    (<span class="keyword">new</span> FileOutputStream(<span class="string">"crab_file"</span>));  </div><div class="line">oo.writeObject(crab);  </div><div class="line">oo.close();  </div><div class="line">   </div><div class="line"><span class="comment">//这里是把对象序列化到文件，我们先注释掉，一会儿用  </span></div><div class="line"><span class="comment">//ObjectInputStream oi = new ObjectInputStream  </span></div><div class="line"><span class="comment">//    (new FileInputStream("crab_file"));  </span></div><div class="line"><span class="comment">//Person crab_back = (Person) oi.readObject();  </span></div><div class="line"><span class="comment">//System.out.println("Hi, My name is " + crab_back.getName());  </span></div><div class="line"><span class="comment">//oi.close();  </span></div><div class="line">   </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>运行完后，我们发现有了一个crab_file文件，这个文件就保存这crab对象在内存中的形态。同样，我们把这部分代码注释掉，运行下面那段还原代码，发现，crab_file文件可以被转化为一个对象。 </p>
+<p>一切都那么顺利，但是如果在序列化之后，Person这个类发生了改变呢？比如，多了一个成员变量。我们做如下试验，还是先将对象序列化到一个文件中，之后在Person这个类中添加一个成员变量，如下： </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> java.io.Serializable;  </div><div class="line">   </div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;  </div><div class="line">     </div><div class="line">    <span class="keyword">private</span> String name;  </div><div class="line">    <span class="comment">//添加这么一个成员变量  </span></div><div class="line">    <span class="keyword">private</span> String address;  </div><div class="line">     </div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;  </div><div class="line">        <span class="keyword">return</span> name;  </div><div class="line">    &#125;  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;  </div><div class="line">        <span class="keyword">this</span>.name = name;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后，我们再去运行一下还原，就发现运行出错了，会报如下错误：<br>Exception in thread “main” java.io.InvalidClassException: Person; local class incompatible: stream classdesc serialVersionUID = 8383901821872620925, local class serialVersionUID = -763618247875550322<br>意思就是说，文件流中的class和classpath中的class，也就是修改过后的class，不兼容了，处于安全机制考虑，程序抛出了错误，并且拒绝载入。那么如果我们真的有需求要在序列化后添加一个字段或者方法呢？应该怎么办？那就是自己去指定serialVersionUID。<font color="#ff0000">之前，在我们的例子中，我们是没有指定serialVersionUID的，那么java编译器会自动给这个class进行一个摘要算法，类似于指纹算法，只要这个文件多一个空格，得到的UID就会截然不同的，可以保证在这么多类中，这个编号是唯一的。所以，我们添加了一个字段后，由于没有显指定serialVersionUID，编译器又为我们生成了一个UID，当然和前面保存在文件中的那个不会一样了，于是就出现了2个号码不一致的错误。</font>因此，只要我们自己指定了serialVersionUID，就可以在序列化后，去添加一个字段，或者方法，而不会影响到后期的还原，还原后的对象照样可以使用，而且还多了方法可以用，呵呵。但是serialVersionUID我们怎么去生成呢？你可以写1，也可以写2，都无所谓，但是最好还是按照摘要算法，生成一个惟一的指纹数字，eclipse可以自动生成的，jdk也自带了这个工具。一般写法类似于<br>private static final long serialVersionUID = -763618247875550322L;</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/">Java</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Java/">Java</a>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/08/11/理解WebView-一/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          理解WebView(一)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/07/20/android-intent-filter-之-data属性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">android intent-filter  之 data属性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="对象序列化为何要定义serialVersionUID" data-title="对象序列化为何要定义serialVersionUID" data-url="http://yoursite.com/2015/07/24/对象序列化为何要定义serialVersionUID/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Loiszad
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://casatwy.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Casa Taloyum</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;strong&gt;Hello! I&#39;m a coder!&lt;br/&gt;&lt;br/&gt;I&#39;m good at Android/IOS!&lt;br/&gt;&lt;br/&gt;I&#39;m poor with HTML/CSS/JS/C!&lt;strong/&gt; &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;I&#39;m coding since Autumn 2012.&lt;small/&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
