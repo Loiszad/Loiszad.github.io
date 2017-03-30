@@ -6,21 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>android intent-filter  之 data属性 | Loisz</title>
+  <title>C8子进程 | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="android 程序中可以通过设置scheme，实现在其他程序（eg. browser中点击此scheme的link）来直接打开程序， 或直接打开程序的某个activity。介绍如下：
-在androidmanifest中想要启动的activity标签下加入：123456&amp;lt;intent-filter&amp;gt;    &amp;lt;action android:name=&quot;android.intent.">
+  <meta name="description" content="fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。1234567891011121314151617181920212223#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;sys/types.h&amp;gt;main()&amp;#123;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="android intent-filter  之 data属性">
-<meta property="og:url" content="http://yoursite.com/2015/07/20/android-intent-filter-之-data属性/index.html">
+<meta property="og:title" content="C8子进程">
+<meta property="og:url" content="http://yoursite.com/2014/08/13/C8子进程/index.html">
 <meta property="og:site_name" content="Loisz">
-<meta property="og:description" content="android 程序中可以通过设置scheme，实现在其他程序（eg. browser中点击此scheme的link）来直接打开程序， 或直接打开程序的某个activity。介绍如下：
-在androidmanifest中想要启动的activity标签下加入：123456&amp;lt;intent-filter&amp;gt;    &amp;lt;action android:name=&quot;android.intent.">
-<meta property="og:updated_time" content="2017-03-14T08:38:48.609Z">
+<meta property="og:description" content="fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。1234567891011121314151617181920212223#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;sys/types.h&amp;gt;main()&amp;#123;">
+<meta property="og:updated_time" content="2017-03-30T07:19:04.177Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="android intent-filter  之 data属性">
-<meta name="twitter:description" content="android 程序中可以通过设置scheme，实现在其他程序（eg. browser中点击此scheme的link）来直接打开程序， 或直接打开程序的某个activity。介绍如下：
-在androidmanifest中想要启动的activity标签下加入：123456&amp;lt;intent-filter&amp;gt;    &amp;lt;action android:name=&quot;android.intent.">
+<meta name="twitter:title" content="C8子进程">
+<meta name="twitter:description" content="fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。1234567891011121314151617181920212223#include &amp;lt;unistd.h&amp;gt;#include &amp;lt;sys/types.h&amp;gt;main()&amp;#123;">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
@@ -153,28 +150,28 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-android-intent-filter-之-data属性" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C8子进程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      android intent-filter  之 data属性
+      C8子进程
     </h1>
   
 
-        <a href="/2015/07/20/android-intent-filter-之-data属性/" class="archive-article-date">
-  	<time datetime="2015-07-20T08:34:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-07-20</time>
+        <a href="/2014/08/13/C8子进程/" class="archive-article-date">
+  	<time datetime="2014-08-13T07:16:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-13</time>
 </a>
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>android 程序中可以通过设置scheme，实现在其他程序（eg. browser中点击此scheme的link）来直接打开程序， 或直接打开程序的某个activity。介绍如下：</p>
-<p>在androidmanifest中想要启动的activity标签下加入：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;intent-filter&gt;</div><div class="line">    &lt;action android:name="android.intent.action.VIEW" /&gt;</div><div class="line">    &lt;category android:name="android.intent.category.DEFAULT" /&gt;</div><div class="line">    &lt;category android:name="android.intent.category.BROWSABLE" /&gt;</div><div class="line">    &lt;data android:scheme="myscheme" /&gt;</div><div class="line">&lt;/intent-filter&gt;</div></pre></td></tr></table></figure></p>
-<p>这样在browser中点击link  （<a href="http://myscheme）时就可以打开程序。" target="_blank" rel="external">http://myscheme）时就可以打开程序。</a></p>
-<h2 id="事例："><a href="#事例：" class="headerlink" title="事例："></a>事例：</h2><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">示例：</div><div class="line">        &lt;intent-filter&gt;</div><div class="line">                &lt;action android:name="android.intent.action.VIEW" /&gt;</div><div class="line"></div><div class="line">                &lt;category android:name="android.intent.category.DEFAULT" /&gt;</div><div class="line">                &lt;category android:name="android.intent.category.BROWSABLE" /&gt;</div><div class="line"></div><div class="line">                &lt;data</div><div class="line">                    android:host="entplus.app"</div><div class="line">                    android:pathPrefix="/openwith"</div><div class="line">                    android:scheme="myapp" /&gt;</div><div class="line">            &lt;/intent-filter&gt;</div><div class="line"></div><div class="line">路径示例：</div><div class="line"></div><div class="line"></div><div class="line">myapp://entplus.app/openwith?jumpFrom=1&amp;type=focus</div><div class="line"></div><div class="line"></div><div class="line">获取路径参数：</div><div class="line"> Uri uri = intent.getData();</div><div class="line">String jumpFrom = uri.getQueryParameter("jumpFrom");</div><div class="line">String cardid = uri.getQueryParameter("cardid");</div></pre></td></tr></table></figure>
+        <h3 id="fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。"><a href="#fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。" class="headerlink" title="fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。"></a>fork在英文中是叉子，分叉的意思，在函数fork中，取后面的意思。很形象的表示程序从这里分叉，fork函数创建了子进程，子进程和父进程同时（其实是cpu分时处理）开始运行分叉之后的程序。</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></div><div class="line">main()</div><div class="line">&#123;</div><div class="line">        <span class="keyword">pid_t</span> pid;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"/n[%d]not fork pid=%d/n"</span>,getpid(),pid);</div><div class="line">        pid=fork();</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"/n[%d]forked pid=%d/n"</span>,getpid(),pid);</div><div class="line">        <span class="keyword">if</span>(pid&lt;<span class="number">0</span>)</div><div class="line">        &#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"error in fork!/n"</span>);</div><div class="line">                getchar();</div><div class="line">                <span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(pid==<span class="number">0</span>)</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"/n[%d]in child process,p_id=%d/n"</span>,getpid(),getpid());</div><div class="line">        <span class="keyword">else</span></div><div class="line">        &#123;</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"/n[%d]in parent process,my pid=%d/n"</span>,getpid(),pid);</div><div class="line">                <span class="built_in">printf</span>(<span class="string">"/n[%d]in parent process,my getpid=%d/n"</span>,getpid(),getpid());</div><div class="line"></div><div class="line">        &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>程序运行结果如下：<br>[hardy@localhost fork]$ ./fork<br>[3819]not fork<br>[3820]forked pid=0<br>[3820]in child process,p_id=3820<br>[3819]forked pid=3820<br>[3819]in parent process,my pid=3820<br>[3819]in parent process,my getpid=3819</p>
+<p>可以清楚的看到 not fork只打印了一次，其中[3819]是父进程的进程号，创建fork以后，fork函数返回给父进程的值pid是子进程的进程号[3820]，而在子进程中，pid值为零。也就是说子进程中，pid被置零。<br>引用网上一位网友的解释“其实就相当于链表，进程形成了链表，父进程pid(p 意味point)指向子进程的进程id, 因为子进程没有子进程，所以其pid为0.  ” </p>
+
       
 
       
@@ -184,13 +181,13 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li></ul>
 	</div>
 
       
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Android/">Android</a>
+	<a class="article-category-link" href="/categories/C/">C</a>
 	</div>
 
 
@@ -205,18 +202,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2015/07/24/对象序列化为何要定义serialVersionUID/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/07/20/android-intent-filter-之-data属性/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          对象序列化为何要定义serialVersionUID
+          android intent-filter  之 data属性
         
       </div>
     </a>
   
   
-    <a href="/2014/08/13/C8子进程/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">C8子进程</div>
+    <a href="/2014/08/11/C7线程锁/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C7线程读写锁</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -229,7 +226,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="android-intent-filter-之-data属性" data-title="android intent-filter  之 data属性" data-url="http://yoursite.com/2015/07/20/android-intent-filter-之-data属性/"></div>
+	<div class="ds-thread" data-thread-key="C8子进程" data-title="C8子进程" data-url="http://yoursite.com/2014/08/13/C8子进程/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
