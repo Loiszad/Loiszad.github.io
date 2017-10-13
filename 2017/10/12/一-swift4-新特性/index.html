@@ -6,14 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017 | Loisz</title>
+  <title>(一)swift4 新特性 | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Loisz">
-<meta property="og:url" content="http://yoursite.com/archives/2017/index.html">
+  <meta name="description" content="开区间swift4可以不指定区间的上界或者下界
+1.无限序列可以用开区间创建一个无限序列
+let arr = 1...
+2.zip函数合并两个集合
+3.集合的下标在集合的下标中用开区间的话，集合的startIndex 和 endIndex会智能补充缺失的一边
+12let arr = [1,2,3,4,5,6]arr[3...]  //取代arr[3..&amp;lt;arr.endIndex]
+字符串1.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(一)swift4 新特性">
+<meta property="og:url" content="http://yoursite.com/2017/10/12/一-swift4-新特性/index.html">
 <meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="开区间swift4可以不指定区间的上界或者下界
+1.无限序列可以用开区间创建一个无限序列
+let arr = 1...
+2.zip函数合并两个集合
+3.集合的下标在集合的下标中用开区间的话，集合的startIndex 和 endIndex会智能补充缺失的一边
+12let arr = [1,2,3,4,5,6]arr[3...]  //取代arr[3..&amp;lt;arr.endIndex]
+字符串1.">
+<meta property="og:updated_time" content="2017-10-13T06:18:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Loisz">
+<meta name="twitter:title" content="(一)swift4 新特性">
+<meta name="twitter:description" content="开区间swift4可以不指定区间的上界或者下界
+1.无限序列可以用开区间创建一个无限序列
+let arr = 1...
+2.zip函数合并两个集合
+3.集合的下标在集合的下标中用开区间的话，集合的startIndex 和 endIndex会智能补充缺失的一边
+12let arr = [1,2,3,4,5,6]arr[3...]  //取代arr[3..&amp;lt;arr.endIndex]
+字符串1.">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
@@ -150,182 +172,129 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-一-swift4-新特性" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/12/一-swift4-新特性/" class="archive-article-date">
-  	<time datetime="2017-10-12T01:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/12/一-swift4-新特性/">(一)swift4 新特性</a>
+    <h1 class="article-title" itemprop="name">
+      (一)swift4 新特性
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        <a href="/2017/10/12/一-swift4-新特性/" class="archive-article-date">
+  	<time datetime="2017-10-12T01:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="开区间"><a href="#开区间" class="headerlink" title="开区间"></a>开区间</h2><p>swift4可以不指定区间的上界或者下界</p>
+<h3 id="1-无限序列"><a href="#1-无限序列" class="headerlink" title="1.无限序列"></a>1.无限序列</h3><p>可以用开区间创建一个无限序列</p>
+<p><code>let arr = 1...</code></p>
+<h3 id="2-zip函数"><a href="#2-zip函数" class="headerlink" title="2.zip函数"></a>2.zip函数</h3><p>合并两个集合</p>
+<h3 id="3-集合的下标"><a href="#3-集合的下标" class="headerlink" title="3.集合的下标"></a>3.集合的下标</h3><p>在集合的下标中用开区间的话，集合的startIndex 和 endIndex会智能补充缺失的一边</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">let arr = [1,2,3,4,5,6]</div><div class="line">arr[3...]  //取代arr[3..&lt;arr.endIndex]</div></pre></td></tr></table></figure>
+<h1 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h1><h3 id="1-三引号"><a href="#1-三引号" class="headerlink" title="1.三引号"></a>1.三引号</h3><p>定义多行字符串，字符串中不需要写转义字符，结尾三引号的缩进，决定每一行头部被裁剪的空格是多少。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let str = &quot;&quot;&quot;</div><div class="line">		Hello World</div><div class="line">		“你好啊”</div><div class="line">		&quot;&quot;&quot;</div></pre></td></tr></table></figure>
+<h3 id="2-Substring是字符串切片后的新类型"><a href="#2-Substring是字符串切片后的新类型" class="headerlink" title="2.Substring是字符串切片后的新类型"></a>2.Substring是字符串切片后的新类型</h3><p>String和Substring两者都遵从StringProtocol    所以String和Substring行为很大程度上一样，Substring可以调用String的API。    </p>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>同文件内的扩展，private声明可见。</p>
+<h1 id="Codable协议"><a href="#Codable协议" class="headerlink" title="Codable协议"></a>Codable协议</h1><p>在swift4.0 中，引入了新的Codable协议，可以让你在不添加其他特殊代码的情况下序列化和反序列化自定义的数据类型，从而不用担心值类型的丢失。更漂亮的是，你可以选择数据被序列化为什么样的格式：plist(XML)或者JSON。</p>
+<pre><code>struct Language:Codable {
+    var name: String
+    var version: Int
+}
+
+let swift = Language(name:&quot;Swift&quot;,version:4)
+let php = Language(name:&quot;PHP&quot;,version:7)
+let perl = Language(name:&quot;Perl&quot;,version:6)
+
+//JSON
+let encoder = JSONEncoder()
+let encoded = try? encoder.encode(swift)
+if encoded != nil {
+    if let json = String(data: encoded!,encoding:.utf8){
+        print(json)
+    }
+}
+
+let decoder = JSONDecoder()
+if let decoded = try? decoder.decode(Language.self, from: encoded!)
+{
+    print(decoded.name)
+}
+
+//XML
+//PropertyList
+let propertyListEncoder = PropertyListEncoder()
+let propertyListed = try? propertyListEncoder.encode(php)
+
+let propertyDecoder = PropertyListDecoder()
+if let value = try? propertyDecoder.decode(Language.self,from: propertyListed!)
+{
+   print(value.name)
+}
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/14/对象序列化为何要定义serialVersionUID/" class="archive-article-date">
-  	<time datetime="2017-03-14T06:15:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/14/对象序列化为何要定义serialVersionUID/">对象序列化为何要定义serialVersionUID</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/14/理解WebView-一/" class="archive-article-date">
-  	<time datetime="2017-03-14T06:02:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-14</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/14/理解WebView-一/">理解WebView(一)</a>
-    </h1>
   
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Android/">Android</a>
-	</div>
+    <a href="/2017/03/14/对象序列化为何要定义serialVersionUID/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">对象序列化为何要定义serialVersionUID</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/08/curl的简单实用/" class="archive-article-date">
-  	<time datetime="2017-03-08T09:04:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-08</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/08/curl的简单实用/">curl的简单实用</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/01/03/Android-IOS内存泄露检测工具/" class="archive-article-date">
-  	<time datetime="2017-01-03T02:27:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-01-03</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/01/03/Android-IOS内存泄露检测工具/">Android/IOS内存泄露检测工具</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android-IOS/">Android/IOS</a></li></ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/IOS/">IOS</a>
-	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="一-swift4-新特性" data-title="(一)swift4 新特性" data-url="http://yoursite.com/2017/10/12/一-swift4-新特性/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -348,8 +317,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
