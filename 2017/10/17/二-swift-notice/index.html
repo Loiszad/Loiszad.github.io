@@ -6,14 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/10 | Loisz</title>
+  <title>(二)swift notice | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Loisz">
-<meta property="og:url" content="http://yoursite.com/archives/2017/10/index.html">
+  <meta name="description" content="1.反转1(0...10).reversed()
+2.utf8编码，每个汉字占3字节3.字符串的格式化12345let h=9let m=8let s=5let formatStr = String(format:&amp;quot;%02d:%02d:%02d&amp;quot;,h,m,s)
+4.字符串的子串1234567891011let num = &amp;quot;15500008888&amp;quot;let s">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(二)swift notice">
+<meta property="og:url" content="http://yoursite.com/2017/10/17/二-swift-notice/index.html">
 <meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="1.反转1(0...10).reversed()
+2.utf8编码，每个汉字占3字节3.字符串的格式化12345let h=9let m=8let s=5let formatStr = String(format:&amp;quot;%02d:%02d:%02d&amp;quot;,h,m,s)
+4.字符串的子串1234567891011let num = &amp;quot;15500008888&amp;quot;let s">
+<meta property="og:updated_time" content="2017-10-20T05:44:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Loisz">
+<meta name="twitter:title" content="(二)swift notice">
+<meta name="twitter:description" content="1.反转1(0...10).reversed()
+2.utf8编码，每个汉字占3字节3.字符串的格式化12345let h=9let m=8let s=5let formatStr = String(format:&amp;quot;%02d:%02d:%02d&amp;quot;,h,m,s)
+4.字符串的子串1234567891011let num = &amp;quot;15500008888&amp;quot;let s">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
@@ -150,91 +160,97 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-二-swift-notice" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/17/二-swift-notice/" class="archive-article-date">
-  	<time datetime="2017-10-17T02:05:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/17/二-swift-notice/">(二)swift notice</a>
+    <h1 class="article-title" itemprop="name">
+      (二)swift notice
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        <a href="/2017/10/17/二-swift-notice/" class="archive-article-date">
+  	<time datetime="2017-10-17T02:05:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-反转"><a href="#1-反转" class="headerlink" title="1.反转"></a>1.反转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(0...10).reversed()</div></pre></td></tr></table></figure>
+<h3 id="2-utf8编码，每个汉字占3字节"><a href="#2-utf8编码，每个汉字占3字节" class="headerlink" title="2.utf8编码，每个汉字占3字节"></a>2.utf8编码，每个汉字占3字节</h3><h3 id="3-字符串的格式化"><a href="#3-字符串的格式化" class="headerlink" title="3.字符串的格式化"></a>3.字符串的格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let h=9</div><div class="line">let m=8</div><div class="line">let s=5</div><div class="line"></div><div class="line">let formatStr = String(format:&quot;%02d:%02d:%02d&quot;,h,m,s)</div></pre></td></tr></table></figure>
+<h3 id="4-字符串的子串"><a href="#4-字符串的子串" class="headerlink" title="4.字符串的子串"></a>4.字符串的子串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let num = &quot;15500008888&quot;</div><div class="line">let s = num.replacingOccurrences(of: &quot;0000&quot;, with: &quot;****&quot;)</div><div class="line"></div><div class="line">//截取 0000  </div><div class="line">let range = num.range(of: &quot;0000&quot;)</div><div class="line">let s1 = num[range!]</div><div class="line">let s2 = num[index...]</div><div class="line"></div><div class="line">var phoneNum = &quot;15899998888&quot;</div><div class="line">let str = phoneNum[String.Index(encodedOffset: 3)...String.Index(encodedOffset: 6)]</div><div class="line">phoneNum.replacingOccurrences(of: str, with: &quot;****&quot;)</div></pre></td></tr></table></figure>
+<h3 id="5-swift类可以不继承任何父类，oc不可以"><a href="#5-swift类可以不继承任何父类，oc不可以" class="headerlink" title="5.swift类可以不继承任何父类，oc不可以"></a>5.swift类可以不继承任何父类，oc不可以</h3><h3 id="6-模糊效果"><a href="#6-模糊效果" class="headerlink" title="6.模糊效果"></a>6.模糊效果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))</div><div class="line">effectView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 200, height: 300))</div><div class="line"></div><div class="line">view.addSubview(effectView)</div></pre></td></tr></table></figure>
+<h3 id="7-自定义启动图"><a href="#7-自定义启动图" class="headerlink" title="7.自定义启动图"></a>7.自定义启动图</h3><p>在控制器的viewdidload里添加imageview  然后淡化移除</p>
+<h3 id="8-可选解包和强制解包"><a href="#8-可选解包和强制解包" class="headerlink" title="8.可选解包和强制解包"></a>8.可选解包和强制解包</h3><p>不需要计算的时候可以用可选解包，反之用强制解包，因为可选项不能直接参与到计算！</p>
+<h3 id="9-内存分配视图分析循环引用"><a href="#9-内存分配视图分析循环引用" class="headerlink" title="9.内存分配视图分析循环引用"></a>9.内存分配视图分析循环引用</h3><h3 id="10-weak-和-unowned"><a href="#10-weak-和-unowned" class="headerlink" title="10. weak 和 unowned"></a>10. weak 和 unowned</h3><p>weak: 弱引用</p>
+<p>unowned: 修饰的对象是assign的，不会强引用，但是如果对象释放，指针地址不会变化，如果继续调用，就会出现野指针的问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 	<i class="icon-book icon"></i>
 	<a class="article-category-link" href="/categories/Swift/">Swift</a>
 	</div>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/10/12/一-swift4-新特性/" class="archive-article-date">
-  	<time datetime="2017-10-12T01:50:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/10/12/一-swift4-新特性/">(一)swift4 新特性</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/Swift/">Swift</a>
-	</div>
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2017/10/12/一-swift4-新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">(一)swift4 新特性</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="二-swift-notice" data-title="(二)swift notice" data-url="http://yoursite.com/2017/10/17/二-swift-notice/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
           </div>
@@ -257,8 +273,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

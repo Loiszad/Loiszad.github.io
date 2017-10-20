@@ -152,6 +152,72 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-二-swift-notice" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/17/二-swift-notice/">(二)swift notice</a>
+    </h1>
+  
+
+        <a href="/2017/10/17/二-swift-notice/" class="archive-article-date">
+  	<time datetime="2017-10-17T02:05:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-17</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-反转"><a href="#1-反转" class="headerlink" title="1.反转"></a>1.反转</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(0...10).reversed()</div></pre></td></tr></table></figure>
+<h3 id="2-utf8编码，每个汉字占3字节"><a href="#2-utf8编码，每个汉字占3字节" class="headerlink" title="2.utf8编码，每个汉字占3字节"></a>2.utf8编码，每个汉字占3字节</h3><h3 id="3-字符串的格式化"><a href="#3-字符串的格式化" class="headerlink" title="3.字符串的格式化"></a>3.字符串的格式化</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">let h=9</div><div class="line">let m=8</div><div class="line">let s=5</div><div class="line"></div><div class="line">let formatStr = String(format:&quot;%02d:%02d:%02d&quot;,h,m,s)</div></pre></td></tr></table></figure>
+<h3 id="4-字符串的子串"><a href="#4-字符串的子串" class="headerlink" title="4.字符串的子串"></a>4.字符串的子串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">let num = &quot;15500008888&quot;</div><div class="line">let s = num.replacingOccurrences(of: &quot;0000&quot;, with: &quot;****&quot;)</div><div class="line"></div><div class="line">//截取 0000  </div><div class="line">let range = num.range(of: &quot;0000&quot;)</div><div class="line">let s1 = num[range!]</div><div class="line">let s2 = num[index...]</div><div class="line"></div><div class="line">var phoneNum = &quot;15899998888&quot;</div><div class="line">let str = phoneNum[String.Index(encodedOffset: 3)...String.Index(encodedOffset: 6)]</div><div class="line">phoneNum.replacingOccurrences(of: str, with: &quot;****&quot;)</div></pre></td></tr></table></figure>
+<h3 id="5-swift类可以不继承任何父类，oc不可以"><a href="#5-swift类可以不继承任何父类，oc不可以" class="headerlink" title="5.swift类可以不继承任何父类，oc不可以"></a>5.swift类可以不继承任何父类，oc不可以</h3><h3 id="6-模糊效果"><a href="#6-模糊效果" class="headerlink" title="6.模糊效果"></a>6.模糊效果</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">let effectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))</div><div class="line">effectView.frame = CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: 200, height: 300))</div><div class="line"></div><div class="line">view.addSubview(effectView)</div></pre></td></tr></table></figure>
+<h3 id="7-自定义启动图"><a href="#7-自定义启动图" class="headerlink" title="7.自定义启动图"></a>7.自定义启动图</h3><p>在控制器的viewdidload里添加imageview  然后淡化移除</p>
+<h3 id="8-可选解包和强制解包"><a href="#8-可选解包和强制解包" class="headerlink" title="8.可选解包和强制解包"></a>8.可选解包和强制解包</h3><p>不需要计算的时候可以用可选解包，反之用强制解包，因为可选项不能直接参与到计算！</p>
+<h3 id="9-内存分配视图分析循环引用"><a href="#9-内存分配视图分析循环引用" class="headerlink" title="9.内存分配视图分析循环引用"></a>9.内存分配视图分析循环引用</h3><h3 id="10-weak-和-unowned"><a href="#10-weak-和-unowned" class="headerlink" title="10. weak 和 unowned"></a>10. weak 和 unowned</h3><p>weak: 弱引用</p>
+<p>unowned: 修饰的对象是assign的，不会强引用，但是如果对象释放，指针地址不会变化，如果继续调用，就会出现野指针的问题</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Swift/">Swift</a></li></ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/Swift/">Swift</a>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/17/二-swift-notice/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-一-swift4-新特性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -735,64 +801,6 @@ if let value = try? propertyDecoder.decode(Language.self,from: propertyListed!)
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2014/05/13/适配不同分辨率屏幕/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-SQLite" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/10/31/SQLite/">SQLite</a>
-    </h1>
-  
-
-        <a href="/2013/10/31/SQLite/" class="archive-article-date">
-  	<time datetime="2013-10-31T06:56:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-10-31</time>
-</a>
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="移动端轻量级数据库"><a href="#移动端轻量级数据库" class="headerlink" title="移动端轻量级数据库"></a>移动端轻量级数据库</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Created by zhaojy on 2016/9/2.</div><div class="line"> */</div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CrossDBManager</span> </span>&#123;</div><div class="line">  </div><div class="line">  </div><div class="line">    <span class="keyword">private</span> Context mContext;</div><div class="line">    <span class="keyword">public</span> <span class="keyword">static</span> CrossDBManager hpdbManager;</div><div class="line">    <span class="keyword">private</span> CrossDataBaseHelper dataBaseHelper;</div><div class="line">    <span class="keyword">private</span> SQLiteDatabase db;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">CrossDBManager</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">super</span>();</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">private</span> <span class="title">CrossDBManager</span><span class="params">(Context mContext)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.mContext = mContext;</div><div class="line">        dataBaseHelper = <span class="keyword">new</span> CrossDataBaseHelper(mContext);</div><div class="line">        db = dataBaseHelper.getWritableDatabase();</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> CrossDBManager <span class="title">getInstance</span><span class="params">(Context context)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (hpdbManager == <span class="keyword">null</span>) &#123;</div><div class="line">            <span class="keyword">synchronized</span> (CrossDBManager.class) &#123;</div><div class="line">                hpdbManager = <span class="keyword">new</span> CrossDBManager(context);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> hpdbManager;</div><div class="line">    &#125;</div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 增</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@param</span> value</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">add</span><span class="params">(String key, String value)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (db != <span class="keyword">null</span>) &#123;</div><div class="line">                db.execSQL(<span class="string">"insert into "</span> + CrossConfiguration.DBTABLE_NAME +<span class="string">"(key,value) values(?,?)"</span>,<span class="keyword">new</span> String[]&#123;key,value&#125;);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Database init Failure"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 删</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">delete</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (db != <span class="keyword">null</span>) &#123;</div><div class="line">                db.execSQL(<span class="string">"delete from "</span> + CrossConfiguration.DBTABLE_NAME + <span class="string">" where key=?"</span>,<span class="keyword">new</span> String[]&#123;key&#125;);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Database init Failure"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 改</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@return</span></div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">update</span><span class="params">(String key, String newValue)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (db != <span class="keyword">null</span>) &#123;</div><div class="line">                db.execSQL(<span class="string">"update "</span> + CrossConfiguration.DBTABLE_NAME + <span class="string">" set value=? where key=?"</span>,<span class="keyword">new</span> String[]&#123;newValue,key&#125;);</div><div class="line">                <span class="keyword">return</span> <span class="keyword">true</span>;</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Database init Failure"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * 查</div><div class="line">     *</div><div class="line">     * <span class="doctag">@param</span> key</div><div class="line">     * <span class="doctag">@return</span> 查询成功返回String 否则返回""</div><div class="line">     */</div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">query</span><span class="params">(String key)</span> </span>&#123;</div><div class="line">        <span class="keyword">try</span> &#123;</div><div class="line">            <span class="keyword">if</span> (db != <span class="keyword">null</span>) &#123;</div><div class="line">                Map&lt;String, String&gt; map = <span class="keyword">new</span> HashMap&lt;String, String&gt;();</div><div class="line">                Cursor cursor = db.rawQuery(<span class="string">"select value from "</span> + CrossConfiguration.DBTABLE_NAME + <span class="string">" where key=?"</span>, <span class="keyword">new</span></div><div class="line">                        String[]&#123;key&#125;);</div><div class="line">                <span class="keyword">int</span> cols_len = cursor.getColumnCount();</div><div class="line">                <span class="keyword">while</span> (cursor.moveToNext()) &#123;</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cols_len; i++) &#123;</div><div class="line">                        String cols_name = cursor.getColumnName(i);</div><div class="line">                        String cols_value = cursor.getString(cursor</div><div class="line">                                .getColumnIndex(cols_name));</div><div class="line">                        <span class="keyword">if</span> (cols_value == <span class="keyword">null</span>) &#123;</div><div class="line">                            cols_value = <span class="string">""</span>;</div><div class="line">                        &#125;</div><div class="line">                        map.put(cols_name, cols_value);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                cursor.close();</div><div class="line">                <span class="keyword">return</span> map.get(<span class="string">"value"</span>);</div><div class="line">            &#125; <span class="keyword">else</span> &#123;</div><div class="line">                <span class="keyword">throw</span> <span class="keyword">new</span> Exception(<span class="string">"Database init Failure"</span>);</div><div class="line">            &#125;</div><div class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</div><div class="line">            e.printStackTrace();</div><div class="line">            <span class="keyword">return</span> <span class="string">""</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  </div><div class="line">    <span class="comment">/**</span></div><div class="line">     * close database</div><div class="line">     */</div><div class="line"><span class="comment">//    public void closeDB() &#123;</span></div><div class="line"><span class="comment">//        if (db != null) &#123;</span></div><div class="line"><span class="comment">//            db.close();</span></div><div class="line"><span class="comment">//        &#125;</span></div><div class="line"><span class="comment">//    &#125;</span></div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQLite/">SQLite</a></li></ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-	<i class="icon-book icon"></i>
-	<a class="article-category-link" href="/categories/SQL/">SQL</a>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/10/31/SQLite/">展开全文 >></a>
         </p>
       
 
