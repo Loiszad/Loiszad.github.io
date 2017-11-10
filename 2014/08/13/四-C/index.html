@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://yoursite.com">
+  <title>(四)C++ | Loisz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.引用
+引用是C++比C扩充的一种数据类型，引用是为对象取一个别名，不占存储空间，引用类型说明符为&amp;amp;
+在声明引用变量类型时，必须同时使之初始化，即声明它是谁的引用，初始化之后，不能再次成为其他变量的引用，例如上面已经声明了int&amp;amp;a=b，就不能再声明int&amp;amp;a=c；
+引用不能为NULL，例如int&amp;amp;a=NULL是错误的。
+
+2.友元
+定义为友元就可以直接访问类的私">
+<meta property="og:type" content="article">
+<meta property="og:title" content="(四)C++">
+<meta property="og:url" content="http://yoursite.com/2014/08/13/四-C/index.html">
+<meta property="og:site_name" content="Loisz">
+<meta property="og:description" content="1.引用
+引用是C++比C扩充的一种数据类型，引用是为对象取一个别名，不占存储空间，引用类型说明符为&amp;amp;
+在声明引用变量类型时，必须同时使之初始化，即声明它是谁的引用，初始化之后，不能再次成为其他变量的引用，例如上面已经声明了int&amp;amp;a=b，就不能再声明int&amp;amp;a=c；
+引用不能为NULL，例如int&amp;amp;a=NULL是错误的。
+
+2.友元
+定义为友元就可以直接访问类的私">
+<meta property="og:updated_time" content="2017-11-10T08:42:48.814Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="(四)C++">
+<meta name="twitter:description" content="1.引用
+引用是C++比C扩充的一种数据类型，引用是为对象取一个别名，不占存储空间，引用类型说明符为&amp;amp;
+在声明引用变量类型时，必须同时使之初始化，即声明它是谁的引用，初始化之后，不能再次成为其他变量的引用，例如上面已经声明了int&amp;amp;a=b，就不能再声明int&amp;amp;a=c；
+引用不能为NULL，例如int&amp;amp;a=NULL是错误的。
+
+2.友元
+定义为友元就可以直接访问类的私">
+  
+    <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
+  
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Loiszad</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">Keep Moving</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/categories/C">C</a></li>
+	        
+				<li><a href="/categories/Java">Java</a></li>
+	        
+				<li><a href="/categories/OC">OC</a></li>
+	        
+				<li><a href="/categories/Swift">Swift</a></li>
+	        
+				<li><a href="/categories/Android">Android</a></li>
+	        
+				<li><a href="/categories/IOS">IOS</a></li>
+	        
+				<li><a href="/categories/Git">Git</a></li>
+	        
+				<li><a href="/categories/SQL">SQL</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+            
+    			
+    			<a data-idx="0" q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">Links</a>
+    			
+    			
+            
+    			
+    			<a data-idx="1" q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">About Me</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-sort"></i></div>
+  		<h1 class="header-author js-mobile-header hide">Loiszad</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Loiszad</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">Keep Moving</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/categories/C">C</a></li>
+		        
+					<li><a href="/categories/Java">Java</a></li>
+		        
+					<li><a href="/categories/OC">OC</a></li>
+		        
+					<li><a href="/categories/Swift">Swift</a></li>
+		        
+					<li><a href="/categories/Android">Android</a></li>
+		        
+					<li><a href="/categories/IOS">IOS</a></li>
+		        
+					<li><a href="/categories/Git">Git</a></li>
+		        
+					<li><a href="/categories/SQL">SQL</a></li>
+		        
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-四-C" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      (四)C++
+    </h1>
+  
+
+        <a href="/2014/08/13/四-C/" class="archive-article-date">
+  	<time datetime="2014-08-13T06:02:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-08-13</time>
+</a>
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-引用"><a href="#1-引用" class="headerlink" title="1.引用"></a>1.引用</h3><ol>
+<li>引用是C++比C扩充的一种数据类型，引用是为对象取一个别名，不占存储空间，引用类型说明符为&amp;</li>
+<li>在声明引用变量类型时，必须同时使之初始化，即声明它是谁的引用，初始化之后，不能再次成为其他变量的引用，例如上面已经声明了int&amp;a=b，就不能再声明int&amp;a=c；</li>
+<li>引用不能为NULL，例如int&amp;a=NULL是错误的。</li>
+</ol>
+<h3 id="2-友元"><a href="#2-友元" class="headerlink" title="2.友元"></a>2.友元</h3><ol>
+<li>定义为友元就可以直接访问类的私有成员 </li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">class A&#123;</div><div class="line">	friend class B;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-标准库容器"><a href="#3-标准库容器" class="headerlink" title="3.标准库容器"></a>3.标准库容器</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">//list</div><div class="line">   list&lt;string&gt; arr;</div><div class="line">   </div><div class="line">   arr.push_back(&quot;1&quot;);</div><div class="line">   arr.push_back(&quot;2&quot;);</div><div class="line">   </div><div class="line">   for(list&lt;string&gt;::iterator it=arr.begin();it!=arr.end();it++)&#123;</div><div class="line">       cout&lt;&lt;*it&lt;&lt;&quot;\n&quot;;</div><div class="line">   &#125;</div><div class="line">   </div><div class="line">   //map</div><div class="line">   map&lt;string,string&gt; m;</div><div class="line">   m[&quot;name&quot;] = &quot;wwwww&quot;;</div><div class="line">   cout&lt;&lt;m[&quot;name&quot;];</div></pre></td></tr></table></figure>
+<h3 id="4-字符串"><a href="#4-字符串" class="headerlink" title="4.字符串"></a>4.字符串</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//字符串的拼接</div><div class="line">   string str = &quot;hello&quot;;</div><div class="line">   str += &quot;world&quot;;</div><div class="line">   cout&lt;&lt;str&lt;&lt;&quot;\n&quot;;</div><div class="line">   </div><div class="line">   //不同类型的写入</div><div class="line">   stringstream ss;</div><div class="line">   ss&lt;&lt;&quot;hello &quot;&lt;&lt;&quot;world &quot;&lt;&lt;20;</div><div class="line">   cout&lt;&lt;ss.str()&lt;&lt;&quot;\n&quot;;</div></pre></td></tr></table></figure>
+<h3 id="5-文件操作"><a href="#5-文件操作" class="headerlink" title="5.文件操作"></a>5.文件操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">//写</div><div class="line">  ofstream of(&quot;data.txt&quot;);</div><div class="line">  of&lt;&lt;&quot;hello world&quot;;</div><div class="line">  of.close();</div><div class="line">  </div><div class="line">  //读</div><div class="line">  ifstream myIf(&quot;data.txt&quot;);</div><div class="line">  stringbuf buf;</div><div class="line">  myIf&gt;&gt;&amp;buf;</div><div class="line">  cout&lt;&lt;buf.str()&lt;&lt;&quot;\n&quot;;</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+	<div class="article-category tagcloud">
+	<i class="icon-book icon"></i>
+	<a class="article-category-link" href="/categories/C/">C</a>
+	</div>
+
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2015/10/19/MySQL/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/05/一-C-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">(三)C++</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="四-C" data-title="(四)C++" data-url="http://yoursite.com/2014/08/13/四-C/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 Loiszad
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: false,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: false
+	}
+</script>
+
+<script src="/./main.js?v=4.0.0.js"></script>
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-wrap">
+    
+
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="https://casatwy.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>Casa Taloyum</a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-me" q-show="aboutme">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">&lt;strong&gt;Hello! I&#39;m a coder!&lt;br/&gt;&lt;br/&gt;I&#39;m good at Android/IOS!&lt;br/&gt;&lt;br/&gt;I&#39;m poor with HTML/CSS/JS/C!&lt;strong/&gt; &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;I&#39;m coding since Autumn 2012.&lt;small/&gt;</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
