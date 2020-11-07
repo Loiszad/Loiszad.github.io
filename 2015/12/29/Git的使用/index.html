@@ -11,25 +11,29 @@
   <meta name="description" content="各种命令1.配置用户名注：三个级别：system系统的、global针对当前用户全局的、local当前仓库①增加   git config –global user.name xxxxxx②增加用户名  git config –global –add user.name xxxx③删除用户名  git config –global –unset user.name xxxxxx④查询   git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git的使用">
-<meta property="og:url" content="http://yoursite.com/2015/12/29/Git的使用/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/12/29/Git%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Loisz">
 <meta property="og:description" content="各种命令1.配置用户名注：三个级别：system系统的、global针对当前用户全局的、local当前仓库①增加   git config –global user.name xxxxxx②增加用户名  git config –global –add user.name xxxx③删除用户名  git config –global –unset user.name xxxxxx④查询   git">
-<meta property="og:updated_time" content="2017-03-14T02:59:53.000Z">
+<meta property="og:locale">
+<meta property="article:published_time" content="2015-12-29T02:19:14.000Z">
+<meta property="article:modified_time" content="2017-03-14T06:30:40.000Z">
+<meta property="article:author" content="Loiszad">
+<meta property="article:tag" content="Git">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git的使用">
-<meta name="twitter:description" content="各种命令1.配置用户名注：三个级别：system系统的、global针对当前用户全局的、local当前仓库①增加   git config –global user.name xxxxxx②增加用户名  git config –global –add user.name xxxx③删除用户名  git config –global –unset user.name xxxxxx④查询   git">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
   
+<link rel="stylesheet" href="/main.css?v=4.0.0.css">
 
   
 
-</head>
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -43,11 +47,9 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Loiszad</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 
-		
-		<p class="header-subtitle">Keep Moving</p>
 		
 
 		<nav class="header-menu">
@@ -55,11 +57,11 @@
 			
 				<li><a href="/categories/C">C</a></li>
 	        
+				<li><a href="/categories/C++">C++</a></li>
+	        
 				<li><a href="/categories/Java">Java</a></li>
 	        
 				<li><a href="/categories/OC">OC</a></li>
-	        
-				<li><a href="/categories/Swift">Swift</a></li>
 	        
 				<li><a href="/categories/Android">Android</a></li>
 	        
@@ -100,7 +102,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Loiszad</h1>
+  		<h1 class="header-author js-mobile-header hide"></h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -108,21 +110,19 @@
 				<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author">Loiszad</h1>
+			  <h1 class="header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle">Keep Moving</p>
 			
 			<nav class="header-menu">
 				<ul>
 				
 					<li><a href="/categories/C">C</a></li>
 		        
+					<li><a href="/categories/C++">C++</a></li>
+		        
 					<li><a href="/categories/Java">Java</a></li>
 		        
 					<li><a href="/categories/OC">OC</a></li>
-		        
-					<li><a href="/categories/Swift">Swift</a></li>
 		        
 					<li><a href="/categories/Android">Android</a></li>
 		        
@@ -161,7 +161,7 @@
     </h1>
   
 
-        <a href="/2015/12/29/Git的使用/" class="archive-article-date">
+        <a href="/2015/12/29/Git%E7%9A%84%E4%BD%BF%E7%94%A8/" class="archive-article-date">
   	<time datetime="2015-12-29T02:19:14.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-12-29</time>
 </a>
       </header>
@@ -170,13 +170,11 @@
       
         <h1 id="各种命令"><a href="#各种命令" class="headerlink" title="各种命令"></a>各种命令</h1><h2 id="1-配置用户名"><a href="#1-配置用户名" class="headerlink" title="1.配置用户名"></a>1.配置用户名</h2><p><strong>注：三个级别：system系统的、global针对当前用户全局的、local当前仓库</strong><br><strong>①增加   git config –global user.name xxxxxx</strong><br><strong>②增加用户名  git config –global –add user.name xxxx</strong><br><strong>③删除用户名  git config –global –unset user.name xxxxxx</strong><br><strong>④查询   git config –list –global</strong><br><strong>⑤修改  git config —global user.name xxxx</strong></p>
 <h2 id="2-初始化Git仓库"><a href="#2-初始化Git仓库" class="headerlink" title="2.初始化Git仓库"></a>2.初始化Git仓库</h2><p><strong>初始化： git init ，然后将本地项目push到远程仓库。或者  git clone url 将远程仓库代码克隆下来。</strong></p>
-<font color="#4590a3">注：pwd 显示当前目录。</font>
-
-
+<p><font color="#ff0000">注：pwd 显示当前目录。</font></p>
 <h2 id="3-提交文件"><a href="#3-提交文件" class="headerlink" title="3.提交文件"></a>3.提交文件</h2><p><strong>①添加文件到本地暂存区 ： git add 文件名。  git add . 或者  git add -A 提交所有文件到暂存区。</strong><br><strong>②提交到本地历史记录：git commit -m ‘提示’</strong><br><strong>③推送到远程仓库：git push origin master</strong></p>
 <h2 id="4-撤销修改"><a href="#4-撤销修改" class="headerlink" title="4.撤销修改"></a>4.撤销修改</h2><p><strong>①从暂存区撤出 ： git reset 文件名。  git reset .从暂存区恢复所有add。</strong><br><strong>②丢弃工作区的修改：git checkout –readme.txt</strong><br><strong>③回滚到某个commit：git reset –hard 版本号。 可以用git log查询版本号。</strong><br><strong>④删除某个文件：git rm xxx   (把工作区的文件和暂存区的引用同时删除掉)  git rm –cached xxx    (只删除暂存区的文件)</strong></p>
 <h2 id="5-分支"><a href="#5-分支" class="headerlink" title="5.分支"></a>5.分支</h2><p><strong>①创建分支   git branch test</strong><br><strong>②切换分支   git checkout test</strong><br><strong>③删除分支   git branch -d test</strong></p>
-<h2 id="6-更新"><a href="#6-更新" class="headerlink" title="6.更新"></a>6.更新</h2><p><strong>git fetch：相当于是从远程获取最新版本到本地，不会自动merge    例：git fetch origin master</strong><br><strong> git pull：相当于是从远程获取最新版本并merge到本地   例：git pull origin master</strong></p>
+<h2 id="6-更新"><a href="#6-更新" class="headerlink" title="6.更新"></a>6.更新</h2><p><strong>git fetch：相当于是从远程获取最新版本到本地，不会自动merge    例：git fetch origin master</strong><br>** git pull：相当于是从远程获取最新版本并merge到本地   例：git pull origin master**</p>
 
       
 
@@ -187,7 +185,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/">Git</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li></ul>
 	</div>
 
       
@@ -232,7 +230,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Git的使用" data-title="Git的使用" data-url="http://yoursite.com/2015/12/29/Git的使用/"></div>
+	<div class="ds-thread" data-thread-key="Git的使用" data-title="Git的使用" data-url="http://yoursite.com/2015/12/29/Git%E7%9A%84%E4%BD%BF%E7%94%A8/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
@@ -260,7 +258,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Loiszad
+    		&copy; 2020 Loiszad
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -283,7 +281,9 @@
 	}
 </script>
 
+
 <script src="/./main.js?v=4.0.0.js"></script>
+
 
 
     

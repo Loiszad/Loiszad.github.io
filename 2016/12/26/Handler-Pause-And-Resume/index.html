@@ -8,34 +8,32 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Handler Pause And Resume | Loisz</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
+  <meta name="description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决： 自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始： 123456789101112131415161718192021222324252627282930class MyHandler extends Handler &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Handler Pause And Resume">
 <meta property="og:url" content="http://yoursite.com/2016/12/26/Handler-Pause-And-Resume/index.html">
 <meta property="og:site_name" content="Loisz">
-<meta property="og:description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
-<meta property="og:updated_time" content="2017-03-06T06:15:12.000Z">
+<meta property="og:description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决： 自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始： 123456789101112131415161718192021222324252627282930class MyHandler extends Handler &amp;#123;">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-12-26T03:30:38.000Z">
+<meta property="article:modified_time" content="2017-03-06T06:15:12.000Z">
+<meta property="article:author" content="Loiszad">
+<meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Handler Pause And Resume">
-<meta name="twitter:description" content="在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：
-自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：
-1234567891011121314151617181920212223242526272829class MyHandler extends Handler &amp;#123;    S">
   
     <link rel="alternative" href="/atom.xml" title="Loisz" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
   
-  <link rel="stylesheet" href="/main.css?v=4.0.0.css">
   
+<link rel="stylesheet" href="/main.css?v=4.0.0.css">
 
   
 
-</head>
+  
+
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body>
   <div id="container" q-class="show:isCtnShow">
@@ -49,11 +47,9 @@
 		</a>
 
 		<hgroup>
-		  <h1 class="header-author"><a href="/">Loiszad</a></h1>
+		  <h1 class="header-author"><a href="/"></a></h1>
 		</hgroup>
 
-		
-		<p class="header-subtitle">Keep Moving</p>
 		
 
 		<nav class="header-menu">
@@ -61,11 +57,11 @@
 			
 				<li><a href="/categories/C">C</a></li>
 	        
+				<li><a href="/categories/C++">C++</a></li>
+	        
 				<li><a href="/categories/Java">Java</a></li>
 	        
 				<li><a href="/categories/OC">OC</a></li>
-	        
-				<li><a href="/categories/Swift">Swift</a></li>
 	        
 				<li><a href="/categories/Android">Android</a></li>
 	        
@@ -106,7 +102,7 @@
       <nav id="mobile-nav">
   	<div class="overlay">
   		<div class="slider-trigger"><i class="icon-sort"></i></div>
-  		<h1 class="header-author js-mobile-header hide">Loiszad</h1>
+  		<h1 class="header-author js-mobile-header hide"></h1>
   	</div>
 	<div class="intrude-less">
 		<header id="header" class="inner">
@@ -114,21 +110,19 @@
 				<img src="https://raw.githubusercontent.com/Loiszad/Loiszad.github.io/master/img/photo.jpg" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author">Loiszad</h1>
+			  <h1 class="header-author"></h1>
 			</hgroup>
-			
-			<p class="header-subtitle">Keep Moving</p>
 			
 			<nav class="header-menu">
 				<ul>
 				
 					<li><a href="/categories/C">C</a></li>
 		        
+					<li><a href="/categories/C++">C++</a></li>
+		        
 					<li><a href="/categories/Java">Java</a></li>
 		        
 					<li><a href="/categories/OC">OC</a></li>
-		        
-					<li><a href="/categories/Swift">Swift</a></li>
 		        
 					<li><a href="/categories/Android">Android</a></li>
 		        
@@ -176,7 +170,9 @@
       
         <p><strong>在某些特定的情况下，我们可能需要暂停处理MessageQueue中的Message，然后恢复。可以通过一下方法来解决：</strong></p>
 <p><strong>自定义Handler，复写handleMessage方法，在方法中添加标记位来控制暂停和开始：</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</div><div class="line">    Stack&lt;Message&gt; s = <span class="keyword">new</span> Stack&lt;Message&gt;();</div><div class="line">    <span class="keyword">boolean</span> is_paused = <span class="keyword">false</span>;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">true</span>;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</div><div class="line">        is_paused = <span class="keyword">false</span>;</div><div class="line">        <span class="keyword">while</span> (!s.empty()) &#123;</div><div class="line">            sendMessageAtFrontOfQueue(s.pop());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (is_paused) &#123;</div><div class="line">            s.push(Message.obtain(msg));</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">               <span class="keyword">super</span>.handleMessage(msg);</div><div class="line">               <span class="comment">// otherwise handle message as normal</span></div><div class="line">               <span class="comment">// ...</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyHandler</span> <span class="keyword">extends</span> <span class="title">Handler</span> </span>&#123;</span><br><span class="line">    Stack&lt;Message&gt; s = <span class="keyword">new</span> Stack&lt;Message&gt;();</span><br><span class="line">    <span class="keyword">boolean</span> is_paused = <span class="keyword">false</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">pause</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        is_paused = <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">resume</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        is_paused = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">while</span> (!s.empty()) &#123;</span><br><span class="line">            sendMessageAtFrontOfQueue(s.pop());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">handleMessage</span><span class="params">(Message msg)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (is_paused) &#123;</span><br><span class="line">            s.push(Message.obtain(msg));</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">               <span class="keyword">super</span>.handleMessage(msg);</span><br><span class="line">               <span class="comment">// otherwise handle message as normal</span></span><br><span class="line">               <span class="comment">// ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
 
       
 
@@ -187,7 +183,7 @@
       
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/">Android</a></li></ul>
+		<ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Android/" rel="tag">Android</a></li></ul>
 	</div>
 
       
@@ -208,7 +204,7 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/01/03/Android-IOS内存泄露检测工具/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/01/03/Android-IOS%E5%86%85%E5%AD%98%E6%B3%84%E9%9C%B2%E6%A3%80%E6%B5%8B%E5%B7%A5%E5%85%B7/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
@@ -218,7 +214,7 @@
     </a>
   
   
-    <a href="/2015/12/29/Git的使用/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/12/29/Git%E7%9A%84%E4%BD%BF%E7%94%A8/" id="article-nav-older" class="article-nav-link-wrap">
       <div class="article-nav-title">Git的使用</div>
       <i class="icon-circle-right"></i>
     </a>
@@ -260,7 +256,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2017 Loiszad
+    		&copy; 2020 Loiszad
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
@@ -283,7 +279,9 @@
 	}
 </script>
 
+
 <script src="/./main.js?v=4.0.0.js"></script>
+
 
 
     
